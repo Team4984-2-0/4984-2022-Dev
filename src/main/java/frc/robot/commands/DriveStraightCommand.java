@@ -28,6 +28,8 @@ public class DriveStraightCommand extends CommandBase {
     double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
    // double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS_left);
     Robot.driveTrain.Drive(-x,-x);
+
+   //S System.out.println(x);
    // Robot.driveTrain.Drive(-y, -y);
 
     //System.out.println("Executing DR STR");

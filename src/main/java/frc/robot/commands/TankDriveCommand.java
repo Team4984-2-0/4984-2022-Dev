@@ -8,12 +8,18 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
 public class TankDriveCommand extends CommandBase {
+
+  public static Joystick leftJoystick = RobotContainer.driverJoystickLeft;
+  public static Joystick rightJoystick = RobotContainer.driverJoystickRight;
+
   /**
    * Creates a new TankDriveCommand.
  * @param b
@@ -30,13 +36,36 @@ public class TankDriveCommand extends CommandBase {
   }
 
   // Called every time the scheduler runs while the command is scheduled.
-  @Override
+  
   public void execute() {
-    DriveTrain.setCoastMode();
-    
- //   DriveTrain.tankDriveLeft(Robot.m_robotContainer.getDriverLeft());
- //   DriveTrain.tankDriveRight(Robot.m_robotContainer.getDriverRight());
 
+
+
+    DriveTrain.setCoastMode();
+
+
+    double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+    double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+
+    System.out.println(x);
+
+
+    //DriveTrain.Drive(left, right);
+
+    //DriveTrain.tankDriveLeft(Robot.m_robotContainer.getDriverLeft()); 
+    //DriveTrain.tankDriveRight(Robot.m_robotContainer.getDriverRight());
+
+   // double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+   // Robot.driveTrain.Drive(-x,-x);
+
+  //  Robot.driveTrain.Drive(0.25, 0.25);
+
+
+  //  DriveTrain.tankDriveLeft(leftJoystick);
+  //  DriveTrain.tankDriveRight(rightJoystick);
+    //DriveTrain.Drive(Robot.m_robotContainer.getDriverLeft(), Robot.m_robotContainer.getDriverRight());
+
+    System.out.println("Left Joystick: " + leftJoystick);
 
   }
 
