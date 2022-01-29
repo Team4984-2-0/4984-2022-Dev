@@ -141,7 +141,7 @@ public class Robot extends TimedRobot {
   //  Compressor airCompressor = new Compressor(PneumaticsModuleType.CTREPCM);//Digtial I/O,Relay
  // airCompressor.enabled();                     // Start the air compressor
 
- DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), RobotContainer.GetDriverJoystickRightRawAxis(1));
+ DriveTrain.Drive(-RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
     
   }
 
