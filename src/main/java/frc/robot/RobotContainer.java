@@ -1,7 +1,5 @@
 package frc.robot;
 
-import javax.print.attribute.standard.JobPrioritySupported;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
