@@ -114,7 +114,7 @@ public class DriveTrain extends SubsystemBase {
     rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
    // rightBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
-  public void Drive(double left, double right) {
+  public static void Drive(double left, double right) {
     leftFrontDriveMotor.set(left);
   //  leftBackDriveMotor.set(left);
     rightFrontDriveMotor.set(right);

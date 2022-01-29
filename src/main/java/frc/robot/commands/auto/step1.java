@@ -25,7 +25,7 @@ public class step1 extends CommandBase{
   public void execute() {
     DriveTrain.setCoastMode();
 
-    Robot.driveTrain.Drive(5, 5);
+    DriveTrain.Drive(5, 5);
 
 }
 
