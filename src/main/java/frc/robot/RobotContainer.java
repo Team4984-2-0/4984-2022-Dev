@@ -26,7 +26,7 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-   tailgateButton.whenActive(new TailgateCommand());
+   //tailgateButton.whenActive(new TailgateCommand());
 
    driverJoystickLeft.getThrottle();
    driverJoystickRight.getThrottle();
