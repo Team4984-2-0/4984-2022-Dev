@@ -49,23 +49,7 @@ public class TankDriveCommand extends CommandBase {
 
     System.out.println(x);
 
-
-    //DriveTrain.Drive(left, right);
-
-    //DriveTrain.tankDriveLeft(Robot.m_robotContainer.getDriverLeft()); 
-    //DriveTrain.tankDriveRight(Robot.m_robotContainer.getDriverRight());
-
-   // double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
-   // Robot.driveTrain.Drive(-x,-x);
-
-  //  Robot.driveTrain.Drive(0.25, 0.25);
-
-
-  //  DriveTrain.tankDriveLeft(leftJoystick);
-  //  DriveTrain.tankDriveRight(rightJoystick);
-    //DriveTrain.Drive(Robot.m_robotContainer.getDriverLeft(), Robot.m_robotContainer.getDriverRight());
-
-    System.out.println("Left Joystick: " + leftJoystick);
+  //  System.out.println("Left Joystick: " + leftJoystick);
 
   }
 

@@ -38,13 +38,8 @@ public class DriveTrain extends SubsystemBase {
 
   public double driveTrainEncoder;
 
-  private float ProportionalScale = .05f;
-  private boolean shouldContinue;
+
   public boolean done;
-
-  private int displayCounter = 1;
-
-  private int testcounter = 1;
   
   public boolean myautotoggle;
 
@@ -52,13 +47,6 @@ public class DriveTrain extends SubsystemBase {
 
   MotorControllerGroup m_right = new MotorControllerGroup(rightFrontDriveMotor, rightBackDriveMotor);
   MotorControllerGroup m_left = new MotorControllerGroup(leftFrontDriveMotor, leftBackDriveMotor);
-
-
-
- //public DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
-
-
- // myautotoggle = myAutotoggle;
 
   public DriveTrain() { 
 
@@ -82,14 +70,10 @@ public class DriveTrain extends SubsystemBase {
 
   }
 
-  
-  
 
   public static void setCoastMode() {
     leftFrontDriveMotor.setIdleMode(IdleMode.kCoast);
-    //leftBackDriveMotor.setIdleMode(IdleMode.kCoast);
     rightFrontDriveMotor.setIdleMode(IdleMode.kCoast);
-    //rightBackDriveMotor.setIdleMode(IdleMode.kCoast);
   }
 
   // A command that turns the Robot a certain amount of degrees in place.
@@ -97,29 +81,22 @@ public class DriveTrain extends SubsystemBase {
 
   public static void tankDriveLeft(Joystick joystick) {
     leftFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-    //leftBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
 
   public static void tankDriveRight(Joystick joystick) {
     rightFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-    //rightBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
 
   public void reverseTankDriveLeft(Joystick joystick) {
     leftFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-  //  leftBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
 
   public void reverseTankDriveRight(Joystick joystick) {
     rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-   // rightBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
   public static void Drive(double left, double right) {
     leftFrontDriveMotor.set(left);
-  //  leftBackDriveMotor.set(left);
     rightFrontDriveMotor.set(right);
-   // rightBackDriveMotor.set(right);
-
   }
 
   public void ResetEncoders() {

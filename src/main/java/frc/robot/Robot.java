@@ -135,7 +135,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
   
-    DriveTrain.Drive(-RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
+    DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
     
   }
 
