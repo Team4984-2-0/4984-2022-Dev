@@ -7,28 +7,30 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.subsystems.Tailgate;
+import frc.robot.subsystems.Tailgate.TailgateDirection;
 
 public class TailgateCommand extends CommandBase {
 
+
   public TailgateCommand() {
-  //  addRequirements(Robot.tailgate);
+    
+    addRequirements(Robot.tailgate);
   }
 
 
   @Override
   public void execute() {
-  //  Robot.tailgate.TailgateSoleniod(Tailgate.TailgateDirection.kOut);
-
+    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kOut);
   }
 
   @Override
   public boolean isFinished() {
-    //Robot.tailgate.TailgateSoleniod(Tailgate.TailgateDirection.kIn);
+    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
      return false;
   }
 
   public void end() {
-   // Robot.tailgate.TailgateSoleniod(Tailgate.TailgateDirection.kIn);
+    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
   }
 
  

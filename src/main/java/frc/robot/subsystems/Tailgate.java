@@ -11,20 +11,34 @@ import frc.robot.commands.TailgateCommand;
 
 
 public class Tailgate extends SubsystemBase {
+  
   public enum TailgateDirection{kOut, kIn};
   
   private Solenoid TailgateSet;
 
   public Tailgate() {
-   // addChild("TailgateSet", TailgateSet);
+    // The Solenoid:
+    // Also, we're only using the Solenoid and not the double Solenoid
+    TailgateSet = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
+
+    addChild("TailgateSet", TailgateSet);
+  }
+
+  public void TailgateSolenoid(TailgateDirection direction){
+    switch(direction){
+      case kOut:
+        TailgateSet.set(true);
+        break;
+      case kIn:
+        TailgateSet.set(false);
+        break;
+    }
   }
 
 
   public void initDefaultCommand() {
 
-//    setDefaultCommand(new TailgateCommand());
-
-
+    //setDefaultCommand(new TailgateCommand());
   }
 
 }
