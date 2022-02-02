@@ -16,7 +16,6 @@ public class Tailgate extends SubsystemBase {
   private Solenoid TailgateSet;
 
   public Tailgate() {
-   TailgateSet = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
    // addChild("TailgateSet", TailgateSet);
   }
 
