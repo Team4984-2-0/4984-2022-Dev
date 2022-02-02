@@ -56,7 +56,7 @@ public final class Constants {
     //HOPPER
     public static final int HOPPER_MOTOR_FRONT = 5;
     public static final int HOPPER_MOTOR_BACK = 6;
-    public static final double HOPPER_SPEED = 100;
+    public static final double HOPPER_SPEED = 50;
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 4;
