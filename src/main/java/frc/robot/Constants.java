@@ -45,7 +45,7 @@ public final class Constants {
 
 
     //CAMERA FUNCTIONS
-    public static final int CAMERA1_FPS = 20;
+    public static final int CAMERA1_FPS = 30;
 
 
     //BUTTON GROUPS
