@@ -1,7 +1,5 @@
 package frc.robot;
 
-import javax.print.attribute.standard.JobPrioritySupported;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -22,29 +20,25 @@ public class RobotContainer {
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
 
   public RobotContainer() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-   StraightCommand.whileHeld(new DriveStraightCommand());
-   ReverseDrive.whileHeld(new ReverseTankDriveCommand());
-
-   //tailgateButton.whenActive(new TailgateCommand());
+  
+    //DriveTrain
 
    driverJoystickLeft.getThrottle();
    driverJoystickRight.getThrottle();
    
+   driverJoystickLeft.getRawAxis(1);
+   driverJoystickRight.getRawAxis(1);
+
+   driverJoystickRight.getY();
+   driverJoystickLeft.getY();
+
+
+   //Commands
+
+   StraightCommand.whileHeld(new DriveStraightCommand());
+   ReverseDrive.whileHeld(new ReverseTankDriveCommand());
+
+   tailgateButton.whenActive(new TailgateCommand());
 
    HopperMove.whileHeld(new HopperCommand(Constants.HOPPER_SPEED));
 
@@ -53,8 +47,8 @@ public class RobotContainer {
    driverJoystickLeft.getThrottle();
    driverJoystickRight.getThrottle();
 
-   throttle();
-  
+   //throttle();
+ 
   }
   
 
