@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutoCommand;
+import frc.robot.commands.TankDriveCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -134,12 +135,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
   
-
-  //  m_robotDrive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
-
-  //  Compressor airCompressor = new Compressor(PneumaticsModuleType.CTREPCM);//Digtial I/O,Relay
- // airCompressor.enabled();                     // Start the air compressor
-
+    DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
     
   }
 
@@ -156,7 +152,7 @@ public class Robot extends TimedRobot {
   public static UsbCamera usbCamera1 = null;
   public class CameraThread extends Thread {
     final int CAMERA1 = 0;
-   // private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
+   private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
 
     VideoSink server;
     
