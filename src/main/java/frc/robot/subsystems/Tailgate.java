@@ -19,19 +19,6 @@ public class Tailgate extends SubsystemBase {
    // addChild("TailgateSet", TailgateSet);
   }
 
-  /*
-  public void TailgateSoleniod(TailgateDirection direction) {
-    switch(direction) {
-      case kOut:
-      TailgateSet.set(true);
-        break;
-      case kIn:
-      TailgateSet.set(false);
-        break;
-    }
-  }
-
-  */
 
   public void initDefaultCommand() {
 
