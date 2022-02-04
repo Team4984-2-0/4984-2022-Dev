@@ -71,6 +71,7 @@ public class Robot extends TimedRobot {
     myCameraThread = new CameraThread();
     CameraServer.getInstance();
     usbCamera1 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA1);
+    usbCamera2 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA2);
     CameraServer.getInstance();
     myCameraThread.server = CameraServer.getServer();
 
@@ -137,6 +138,7 @@ public class Robot extends TimedRobot {
 
   
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
+  //  System.out.println(RobotContainer.GetDriverJoystickLeftRawAxis(1));
     
   }
 
@@ -151,8 +153,10 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {}
 
   public static UsbCamera usbCamera1 = null;
+  public static UsbCamera usbCamera2 = null;
   public class CameraThread extends Thread {
     final int CAMERA1 = 0;
+    final int CAMERA2 = 1;
    private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
 
     VideoSink server;
