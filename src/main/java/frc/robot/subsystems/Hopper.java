@@ -23,7 +23,7 @@ public class Hopper extends SubsystemBase {
 
   public void setHopperMotor(double speed) {
     //hopperMotorFront.set(ControlMode.PercentOutput, 100);
-    hopperMotorBack.set(ControlMode.PercentOutput, speed);
+    hopperMotorBack.set(ControlMode.PercentOutput, -speed);
   }
 
   @Override
