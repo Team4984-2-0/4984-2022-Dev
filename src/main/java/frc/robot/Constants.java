@@ -54,7 +54,7 @@ public final class Constants {
     public static final int OPERATOR_HOPPER = 1;
 
     //HOPPER
-    public static final int HOPPER_MOTOR_FRONT = 5;
+    public static final int HOPPER_MOTOR_FRONT = 1;  //5
     public static final int HOPPER_MOTOR_BACK = 6;
     public static final double HOPPER_SPEED = 50;
 
