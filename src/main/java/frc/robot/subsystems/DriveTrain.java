@@ -59,6 +59,10 @@ public class DriveTrain extends SubsystemBase {
     drive = new DifferentialDrive(m_left, m_right);
 
     drive.setSafetyEnabled(false);
+
+
+    //Maybe Print out encoder values
+    //System.out.println(drive);
    
   }
 
