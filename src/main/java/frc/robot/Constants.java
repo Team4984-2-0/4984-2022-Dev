@@ -40,8 +40,8 @@ public final class Constants {
 
   
     //SparkMax OpenRamp Rate
-    public static final double OPEN_LEFT_LOOP_RATE = 0.8;
-    public static final double OPEN_RIGHT_LOOP_RATE = 0.8;
+    public static final double OPEN_LEFT_LOOP_RATE = 0.15;
+    public static final double OPEN_RIGHT_LOOP_RATE = 0.15;
 
 
     //CAMERA FUNCTIONS
@@ -56,7 +56,7 @@ public final class Constants {
     //HOPPER
     public static final int HOPPER_MOTOR_FRONT = 5;
     public static final int HOPPER_MOTOR_BACK = 6;
-    public static final double HOPPER_SPEED = 100;
+    public static final double HOPPER_SPEED = 50;
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 4;

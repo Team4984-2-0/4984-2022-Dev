@@ -26,11 +26,9 @@ public class DriveStraightCommand extends CommandBase {
     DriveTrain.setCoastMode();
 
     double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
-   // double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS_left);
     Robot.driveTrain.Drive(-x,-x);
-   // Robot.driveTrain.Drive(-y, -y);
 
-    //System.out.println("Executing DR STR");
+ 
   }
 
   // Called once the command ends or is interrupted.
