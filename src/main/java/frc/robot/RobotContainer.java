@@ -9,7 +9,7 @@ public class RobotContainer {
   public static Joystick driverJoystickLeft = new Joystick(Constants.DRIVER_JOYSTICK_LEFT);
   public static Joystick driverJoystickRight= new Joystick(Constants.DRIVER_JOYSTICK_RIGHT);
 
-  private XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROLLER);
+  public static XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROLLER);
 
 
   JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
@@ -23,6 +23,7 @@ public class RobotContainer {
   JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
 
 
+  
   public RobotContainer() {
   
     //DriveTrain
