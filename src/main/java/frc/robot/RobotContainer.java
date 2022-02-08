@@ -15,9 +15,13 @@ public class RobotContainer {
   JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
   JoystickButton ReverseDrive = new JoystickButton(driverJoystickLeft, Constants.DRIVE_REVERSE_BUTTON);
 
-  JoystickButton HopperMove = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER);
 
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
+
+
+  JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
+  JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
+
 
   public RobotContainer() {
   
@@ -38,9 +42,16 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-   tailgateButton.whenActive(new TailgateCommand());
+   //tailgateButton.whenActive(new TailgateCommand());
 
-   HopperMove.whileHeld(new HopperCommand(Constants.HOPPER_SPEED));
+   indeHopperButton.whileHeld(new HopperIndeCommand());
+   simHopperButton.whileHeld(new HopperSimCommand());
+
+
+
+
+
+   //DO NOT USE!!!! HopperMove.whileHeld(new HopperCommand(Constants.HOPPER_SPEED));
 
 
    //TODO TRY THESE VALUES

@@ -5,42 +5,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hopper;
 
-public class SimultaneousHopperCommand extends CommandBase {
-
-  public static double m_speed;
-
-  /** Creates a new SimultaneousHopperCommand. */
-  public SimultaneousHopperCommand(double speed) {
+public class HopperIndeCommand extends CommandBase {
+  /** Creates a new HopperIndeCommand. */
+  public HopperIndeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-
     addRequirements(Robot.hopper);
-
-    m_speed = speed;
   }
+
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  
-
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    Robot.hopper.setHopperMotorBack(Constants.HOPPER_SIM_SPEED);
-    Robot.hopper.setHopperMotorFront(Constants.HOPPER_SIM_SPEED);
+    Hopper.hopperIndeControler();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
-    Robot.hopper.setHopperMotorBack(Constants.MOTOR_STOP);
-    Robot.hopper.setHopperMotorFront(Constants.MOTOR_STOP);
+    Hopper.hopperEnd();
   }
 
   // Returns true when the command should end.

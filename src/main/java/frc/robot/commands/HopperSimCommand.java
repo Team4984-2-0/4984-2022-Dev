@@ -5,20 +5,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.Robot;
 
-public class IndependentHopperCommand extends CommandBase {
-  public static double m_speed;
-
-
-  /** Creates a new IndependentHopperCommand. */
-  public IndependentHopperCommand(double speed) {
-    // Use addRequirements() here to declare subsystem dependencies.
-
+public class HopperSimCommand extends CommandBase {
+  /** Creates a new HopperSimCommand. */
+  public HopperSimCommand() {
     addRequirements(Robot.hopper);
-
-    m_speed = speed;
   }
 
   // Called when the command is initially scheduled.
@@ -28,16 +19,13 @@ public class IndependentHopperCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    Robot.hopper.setHopperMotorBack(Constants.HOPPER_INDEPENENT_SPEED);
-
+    Hopper.hopperSimControler();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
-    Robot.hopper.setHopperMotorBack(Constants.MOTOR_STOP);
+    Hopper.hopperEnd();
   }
 
   // Returns true when the command should end.

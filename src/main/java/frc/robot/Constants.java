@@ -52,16 +52,18 @@ public final class Constants {
     //BUTTON GROUPS
     public static final int DRIVE_STRAIGHT_BUTTON = 1;
     public static final int DRIVE_REVERSE_BUTTON = 2;
-    public static final int OPERATOR_HOPPER = 1;
+    public static final int OPERATOR_HOPPER_INDE = 1;
+    public static final int OPERATOR_HOPPER_SIM = 2;
 
     //HOPPER
     public static final int HOPPER_MOTOR_FRONT = 6;
-    public static final int HOPPER_MOTOR_BACK = 7;
-    public static final double HOPPER_SPEED = 10;
+    public static final int HOPPER_MOTOR_BACK = 5;
 
-    public static final int HOPPER_INDEPENENT_SPEED = 20;
 
-    public static final int HOPPER_SIM_SPEED = 20;
+    public static final double HOPPER_SPEED = 0.5;
+    public static final double HOPPER_INDEPENENT_SPEED = 0.5;
+    public static final double HOPPER_SIM_SPEED = 0.5;
+    public static final double HOPPER_COMBINED_SPEED = 0.5;
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 4;
