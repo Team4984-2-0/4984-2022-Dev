@@ -22,18 +22,24 @@ public class Hopper extends SubsystemBase {
   }
 
   public static void hopperIndeControler (){
-    hopperMotorBack.set(ControlMode.PercentOutput, Constants.HOPPER_INDEPENENT_SPEED);
+    hopperMotorBack.set(ControlMode.PercentOutput, -Constants.HOPPER_INDEPENENT_SPEED);
   }
 
   public static void hopperSimControler (){
-    hopperMotorBack.set(ControlMode.PercentOutput, Constants.HOPPER_SIM_SPEED);
-    hopperMotorFront.set(ControlMode.PercentOutput, Constants.HOPPER_SIM_SPEED);
+    hopperMotorBack.set(ControlMode.PercentOutput, -Constants.HOPPER_SIM_SPEED);
+    hopperMotorFront.set(ControlMode.PercentOutput, -Constants.HOPPER_SIM_SPEED);
+  }
+
+  public static void hopperPull (){
+    hopperMotorBack.set(ControlMode.PercentOutput, Constants.HOPPER_PULL_SPEED);
+    hopperMotorFront.set(ControlMode.PercentOutput, Constants.HOPPER_PULL_SPEED);
   }
 
   public static void hopperEnd (){
     hopperMotorBack.follow(hopperMotorFront);
     hopperMotorFront.set(ControlMode.PercentOutput, Constants.MOTOR_STOP);
   }
+  
 
 
   @Override

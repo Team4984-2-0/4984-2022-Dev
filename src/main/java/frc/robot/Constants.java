@@ -54,6 +54,7 @@ public final class Constants {
     public static final int DRIVE_REVERSE_BUTTON = 2;
     public static final int OPERATOR_HOPPER_INDE = 1;
     public static final int OPERATOR_HOPPER_SIM = 2;
+    public static final int OPERATOR_HOPPER_PULL = 3;
 
     //HOPPER
     public static final int HOPPER_MOTOR_FRONT = 6;
@@ -64,6 +65,7 @@ public final class Constants {
     public static final double HOPPER_INDEPENENT_SPEED = 0.5;
     public static final double HOPPER_SIM_SPEED = 0.5;
     public static final double HOPPER_COMBINED_SPEED = 0.5;
+    public static final double HOPPER_PULL_SPEED = 0.2;
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 4;
