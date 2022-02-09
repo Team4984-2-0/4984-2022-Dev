@@ -12,18 +12,35 @@ import frc.robot.Constants;
 public class Hopper extends SubsystemBase {
   /** Creates a new Hopper. */
 
-  public TalonSRX hopperMotorFront = new TalonSRX(Constants.HOPPER_MOTOR_FRONT);
-  public TalonSRX hopperMotorBack = new TalonSRX(Constants.HOPPER_MOTOR_BACK);
+  public static TalonSRX hopperMotorFront = new TalonSRX(Constants.HOPPER_MOTOR_FRONT);
+  public static TalonSRX hopperMotorBack = new TalonSRX(Constants.HOPPER_MOTOR_BACK);
 
 
 
   public Hopper() {
-    hopperMotorBack.follow(hopperMotorFront);
+   // hopperMotorBack.follow(hopperMotorFront);
   }
 
-  public void setHopperMotor(double speed) {
-    hopperMotorFront.set(ControlMode.PercentOutput, speed);
+  public static void hopperIndeControler (){
+    hopperMotorBack.set(ControlMode.PercentOutput, -Constants.HOPPER_INDEPENENT_SPEED);
   }
+
+  public static void hopperSimControler (){
+    hopperMotorBack.set(ControlMode.PercentOutput, -Constants.HOPPER_SIM_SPEED);
+    hopperMotorFront.set(ControlMode.PercentOutput, -Constants.HOPPER_SIM_SPEED);
+  }
+
+  public static void hopperPull (){
+    hopperMotorBack.set(ControlMode.PercentOutput, Constants.HOPPER_PULL_SPEED);
+    hopperMotorFront.set(ControlMode.PercentOutput, Constants.HOPPER_PULL_SPEED);
+  }
+
+  public static void hopperEnd (){
+    hopperMotorBack.follow(hopperMotorFront);
+    hopperMotorFront.set(ControlMode.PercentOutput, Constants.MOTOR_STOP);
+  }
+  
+
 
   @Override
   public void periodic() {

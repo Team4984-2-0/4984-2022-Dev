@@ -16,7 +16,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import org.w3c.dom.ls.LSParserFilter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -60,6 +59,10 @@ public class DriveTrain extends SubsystemBase {
     drive = new DifferentialDrive(m_left, m_right);
 
     drive.setSafetyEnabled(false);
+
+
+    //Maybe Print out encoder values
+    //System.out.println(drive);
    
   }
 

@@ -9,15 +9,21 @@ public class RobotContainer {
   public static Joystick driverJoystickLeft = new Joystick(Constants.DRIVER_JOYSTICK_LEFT);
   public static Joystick driverJoystickRight= new Joystick(Constants.DRIVER_JOYSTICK_RIGHT);
 
-  private XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROLLER);
+  public static XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROLLER);
 
 
   JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
   JoystickButton ReverseDrive = new JoystickButton(driverJoystickLeft, Constants.DRIVE_REVERSE_BUTTON);
 
-  JoystickButton HopperMove = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER);
 
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
+
+
+  JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
+  JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
+  JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
+
+
 
   public RobotContainer() {
   
@@ -38,9 +44,17 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-   tailgateButton.whenActive(new TailgateCommand());
+   //tailgateButton.whenActive(new TailgateCommand());
 
-   HopperMove.whileHeld(new HopperCommand(Constants.HOPPER_SPEED));
+   indeHopperButton.whileHeld(new HopperIndeCommand());
+   simHopperButton.whileHeld(new HopperSimCommand());
+   pullHopperButton.whileHeld(new HopperPullCommand());
+
+
+
+
+
+   //DO NOT USE!!!! HopperMove.whileHeld(new HopperCommand(Constants.HOPPER_SPEED));
 
 
    //TODO TRY THESE VALUES

@@ -5,43 +5,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hopper;
 
-public class DriveDistanceCommand extends CommandBase {
-  public int d_Distance;
-  private double m_left;
-  private double m_right;
-
-  /** Creates a new DriveDistanceCommand. */
-  public DriveDistanceCommand(int super11, double leftmotor, double rightmotor) {
-    // Use addRequirements() here to declare subsystem dependencies.
-
-    d_Distance = super11;
-    m_left = leftmotor;
-    m_right = rightmotor;
-    addRequirements(Robot.driveTrain);
-    
+public class HopperSimCommand extends CommandBase {
+  /** Creates a new HopperSimCommand. */
+  public HopperSimCommand() {
+    addRequirements(Robot.hopper);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    Robot.driveTrain.ResetEncoders();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.driveTrain.Drive(m_left, m_right); 
+    Hopper.hopperSimControler();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.driveTrain.Drive(Constants.MOTOR_STOP, Constants.MOTOR_STOP);   
+    Hopper.hopperEnd();
   }
-  
 
   // Returns true when the command should end.
   @Override

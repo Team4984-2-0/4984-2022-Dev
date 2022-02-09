@@ -4,15 +4,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutoCommand;
-import frc.robot.commands.TankDriveCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
@@ -74,6 +71,7 @@ public class Robot extends TimedRobot {
     myCameraThread = new CameraThread();
     CameraServer.getInstance();
     usbCamera1 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA1);
+    usbCamera2 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA2);
     CameraServer.getInstance();
     myCameraThread.server = CameraServer.getServer();
 
@@ -87,6 +85,10 @@ public class Robot extends TimedRobot {
     myCameraThread.getCameraConfig();
 
     m_autonomousCommand = (new AutoCommand());
+
+
+    SmartDashboard.putData("Hopper", new Hopper());
+    Shuffleboard.update();
 
   }
 
@@ -150,8 +152,10 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {}
 
   public static UsbCamera usbCamera1 = null;
+  public static UsbCamera usbCamera2 = null;
   public class CameraThread extends Thread {
     final int CAMERA1 = 0;
+    final int CAMERA2 = 1;
    private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
 
     VideoSink server;
