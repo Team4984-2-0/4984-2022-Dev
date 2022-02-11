@@ -47,9 +47,8 @@ public class TankDriveCommand extends CommandBase {
     double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
     double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
 
-    System.out.println(x);
+ //   System.out.println(x);
 
-  //  System.out.println("Left Joystick: " + leftJoystick);
 
   }
 
