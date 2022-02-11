@@ -37,8 +37,7 @@ public class Tailgate extends SubsystemBase {
 
 
   public void initDefaultCommand() {
-
-    //setDefaultCommand(new TailgateCommand());
+      setDefaultCommand(new TailgateCommand());
   }
 
 }
