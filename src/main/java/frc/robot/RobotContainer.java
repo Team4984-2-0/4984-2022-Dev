@@ -22,6 +22,7 @@ public class RobotContainer {
   JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
   JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
 
+  JoystickButton hookButton = new JoystickButton(operatorController, Constants.HOOK_BUTTON);
 
 
 
@@ -51,7 +52,7 @@ public class RobotContainer {
    simHopperButton.whileHeld(new HopperSimCommand());
    pullHopperButton.whileHeld(new HopperPullCommand());
 
-    
+    hookButton.whileHeld(new HookCommand());
 
 
 
