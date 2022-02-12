@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Hopper hopper = new Hopper();
   public static Tailgate tailgate = new Tailgate();
+  public static HookSolenoid hook = new HookSolenoid();
 
 //  Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
