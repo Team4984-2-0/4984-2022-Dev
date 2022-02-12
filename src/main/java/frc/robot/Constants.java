@@ -68,7 +68,7 @@ public final class Constants {
     public static final double HOPPER_PULL_SPEED = 0.2;
 
     //Tailgate
-    public static final int TAILGATE_BUTTON = 4;
+    public static final int TAILGATE_BUTTON = 6;
 
     //ALL END
 
