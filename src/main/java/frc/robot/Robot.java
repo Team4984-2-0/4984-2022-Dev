@@ -67,7 +67,7 @@ public class Robot extends TimedRobot {
    // m_robotDrive = new MecanumDrive(DriveTrain.leftFrontDriveMotor, DriveTrain.leftBackDriveMotor, DriveTrain.rightFrontDriveMotor, DriveTrain.rightBackDriveMotor);
 
    // llmain.LL_Data();
-
+/*
     myCameraThread = new CameraThread();
     CameraServer.getInstance();
     usbCamera1 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA1);
@@ -83,7 +83,7 @@ public class Robot extends TimedRobot {
     myCameraThread.start();
     myCameraThread.setResolutionHigh();
     myCameraThread.getCameraConfig();
-
+*/
     m_autonomousCommand = (new AutoCommand());
 
 
