@@ -45,8 +45,8 @@ public final class Constants {
 
 
     //CAMERA FUNCTIONS
-    public static final int CAMERA1_FPS = 15;
-    public static final int CAMERA2_FPS = 15;
+    public static final int CAMERA1_FPS = 10;
+    public static final int CAMERA2_FPS = 10;
 
 
     //BUTTON GROUPS
@@ -60,18 +60,16 @@ public final class Constants {
     public static final int HOPPER_MOTOR_FRONT = 6;
     public static final int HOPPER_MOTOR_BACK = 5;
 
-
-    public static final double HOPPER_SPEED = 0.5;
-    public static final double HOPPER_INDEPENENT_SPEED = 0.5;
-    public static final double HOPPER_SIM_SPEED = 0.5;
-    public static final double HOPPER_COMBINED_SPEED = 0.5;
+    public static final double HOPPER_SPEED = 0.40;
+    public static final double HOPPER_INDEPENENT_SPEED = 0.40;
+    public static final double HOPPER_SIM_SPEED = 0.40;
+    public static final double HOPPER_COMBINED_SPEED = 0.40;
     public static final double HOPPER_PULL_SPEED = 0.2;
 
     //Tailgate
-    public static final int TAILGATE_BUTTON = 4;
+    public static final int TAILGATE_BUTTON = 6;
 
     //ALL END
-
     public static final int MOTOR_STOP = 0;
 
 

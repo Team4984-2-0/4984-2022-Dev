@@ -7,25 +7,36 @@ package frc.robot.commands;
 
 /** Add your docs here. */
 public class PID {
-    /*
-    public static int P, I, D = 1;
-    public int integral;
+   
+    public static int Kp, Ki, Kd = 0;
+    public static int integral = 1;
     public static int previous_error;
-    public int setpoint = 0;
-    Gyro gyro;
-    DifferentialDrive robotDrive;
-    private Object rcw;
+    public static int setpoint = 0;
+    public static double result;
+    public static int bias = 0;
+
+
+    public void setSetpoint(int setpoint)
+    {
+        PID.setpoint = setpoint;
+    }
+
+    public static void pid(){
+
+     result =   ((Kp*previous_error) * 
+                (Ki*(Ki-integral + previous_error + setpoint)) + 
+                (Kd * previous_error * (previous_error-setpoint/integral) + 
+                bias));
+
+    }
+
+       /*
 
 
     public void Drive(Gyro gyro){
         this.gyro = gyro;
     }
 
-
-    public void setSetpoint(int setpoint)
-    {
-        this.setpoint = setpoint;
-    }
 
     public void PID(){
         error = setpoint - gyro.getAngle(); // Error = Target - Actual

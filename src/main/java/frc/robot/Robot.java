@@ -6,12 +6,22 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutoCommand;
+import frc.robot.commands.HopperIndeCommand;
+import frc.robot.commands.HopperPullCommand;
+import frc.robot.commands.HopperSimCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import java.util.Map;
+
+import org.opencv.highgui.HighGui;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoSink;
@@ -89,6 +99,18 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData("Hopper", new Hopper());
     Shuffleboard.update();
+
+
+    //Shuffleboard Data
+
+    ShuffleboardLayout hopperCommand = Shuffleboard.getTab("Commands")
+      .getLayout("Hopper", BuiltInLayouts.kList)
+      .withSize(2, 3)
+      .withProperties(Map.of("Label position", "HIDDEN")); // hide labels for commands
+
+      hopperCommand.add(new HopperPullCommand());
+      hopperCommand.add(new HopperIndeCommand());
+      hopperCommand.add(new HopperSimCommand());
 
   }
 
@@ -174,7 +196,7 @@ public class Robot extends TimedRobot {
 
     public void setResolutionHigh(){
         System.out.println("CameraThread rsetResolutionHigh running");
-        usbCamera1.setResolution(200, 200);
+        usbCamera1.setResolution(150, 150);
         usbCamera1.setFPS(Constants.CAMERA1_FPS);
     }
 
@@ -200,6 +222,10 @@ public class Robot extends TimedRobot {
         usbCamera1.setFPS(Constants.CAMERA1_FPS);
         usbCamera1.setBrightness(50);  
         usbCamera1.setExposureAuto();  
+
+        usbCamera2.setFPS(Constants.CAMERA2_FPS);
+        usbCamera2.setBrightness(50);
+        usbCamera2.setExposureAuto();
   }
   }
 
