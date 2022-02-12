@@ -16,12 +16,6 @@
     
     private Solenoid TailgateSet;
 
-<<<<<<< Updated upstream
-    public Tailgate() {
-      // The Solenoid:
-      // Also, we're only using the Solenoid and not the double Solenoid
-      TailgateSet = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
-=======
   public Tailgate() {
     // The Solenoid:
     // Also, we're only using the Solenoid and not the dounle Solenoid
@@ -29,10 +23,6 @@
 
     addChild("TailgateSet", TailgateSet);
   }
->>>>>>> Stashed changes
-
-      addChild("TailgateSet", TailgateSet);
-    }
 
     public void TailgateSolenoid(TailgateDirection direction){
       switch(direction){
