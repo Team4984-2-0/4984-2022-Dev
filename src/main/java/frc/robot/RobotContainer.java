@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.subsystems.Tailgate;
 
 public class RobotContainer {
   public static Joystick driverJoystickLeft = new Joystick(Constants.DRIVER_JOYSTICK_LEFT);
@@ -15,15 +16,15 @@ public class RobotContainer {
   JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
   JoystickButton ReverseDrive = new JoystickButton(driverJoystickLeft, Constants.DRIVE_REVERSE_BUTTON);
 
-
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
-
 
   JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
   JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
   JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
 
   JoystickButton hookButton = new JoystickButton(operatorController, Constants.HOOK_BUTTON);
+
+
 
 
   public RobotContainer() {
@@ -45,7 +46,7 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-   //tailgateButton.whenActive(new TailgateCommand());
+   tailgateButton.whileHeld(new TailgateCommand());
 
    indeHopperButton.whileHeld(new HopperIndeCommand());
    simHopperButton.whileHeld(new HopperSimCommand());
