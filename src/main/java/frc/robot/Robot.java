@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -31,7 +33,7 @@ public class Robot extends TimedRobot {
   public static Hopper hopper = new Hopper();
   public static Tailgate tailgate = new Tailgate();
 
-//  Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+  public static Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
 
   public static RobotContainer m_robotContainer;

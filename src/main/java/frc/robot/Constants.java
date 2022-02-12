@@ -74,7 +74,7 @@ public final class Constants {
 >>>>>>> 1150dab768cf99f077fc86a6573942cf5ed5c4b4
 
     //Tailgate
-    public static final int TAILGATE_BUTTON = 4;
+    public static final int TAILGATE_BUTTON = 6;
 
     //ALL END
 
