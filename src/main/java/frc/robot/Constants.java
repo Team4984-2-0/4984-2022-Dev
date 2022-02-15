@@ -28,7 +28,6 @@ public final class Constants {
     //OPERATOR CONTROLLER ID
     public static final int OPERATOR_CONTROLLER = 0;
     public static final int OPERATOR_RIGHT_AXIS = 5;
-    public static final int OPERATOR_LEFT_AXIS = 1;
   
   
     //SparkMax Motor ID's
@@ -45,8 +44,8 @@ public final class Constants {
 
 
     //CAMERA FUNCTIONS
-    public static final int CAMERA1_FPS = 15;
-    public static final int CAMERA2_FPS = 15;
+    public static final int CAMERA1_FPS = 10;
+    public static final int CAMERA2_FPS = 10;
 
 
     //BUTTON GROUPS
@@ -56,20 +55,31 @@ public final class Constants {
     public static final int OPERATOR_HOPPER_SIM = 2;
     public static final int OPERATOR_HOPPER_PULL = 3;
 
+    public static final int OPERATOR_LEFT_AXIS_X = 0;
+    public static final int OPERATOR_LEFT_AXIS_Y = 1;
+    public static final int OPERATOR_RIGHT_AXIS_X = 4;
+    public static final int OPERATOR_RIGHT_AXIS_Y = 5;
+
     //HOPPER
-    public static final int HOPPER_MOTOR_FRONT = 1;  //5
-    public static final int HOPPER_MOTOR_BACK = 6;
-    public static final double HOPPER_SPEED = 50;
+    public static final int HOPPER_MOTOR_FRONT = 6;
+    public static final int HOPPER_MOTOR_BACK = 5;
+
+    public static final double HOPPER_SPEED = 0.40;
+    public static final double HOPPER_INDEPENENT_SPEED = 0.40;
+    public static final double HOPPER_SIM_SPEED = 0.40;
+    public static final double HOPPER_COMBINED_SPEED = 0.40;
+    public static final double HOPPER_PULL_SPEED = 0.2;
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 6;
 
-    //Hook
-    public static final int HOOK_BUTTON = 9;
+    //Winch
+    public static final int WINCH_MOTOR = 7;
 
     //ALL END
-
     public static final int MOTOR_STOP = 0;
+
+
 
 
 
