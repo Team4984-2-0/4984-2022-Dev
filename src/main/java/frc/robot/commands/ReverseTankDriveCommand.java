@@ -32,7 +32,8 @@ public class ReverseTankDriveCommand extends CommandBase {
     
     Robot.driveTrain.reverseTankDriveRight(Robot.m_robotContainer.getDriverLeft());
     Robot.driveTrain.reverseTankDriveLeft(Robot.m_robotContainer.getDriverRight());
-  }
+
+ }
 
   // Called once the command ends or is interrupted.
   @Override

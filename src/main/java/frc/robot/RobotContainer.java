@@ -1,7 +1,9 @@
 package frc.robot;
 
+import edu.wpi.first.cscore.AxisCamera;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.Tailgate;
@@ -25,7 +27,10 @@ public class RobotContainer {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
   public RobotContainer() {
   
     //DriveTrain
@@ -91,7 +96,7 @@ public class RobotContainer {
     return driverJoystickRight;
   }
 
-  public double GetOperatorRawAxis(int axis) {
+  public static double GetOperatorRawAxis(int axis) {
     return operatorController.getRawAxis(axis);
   }
 

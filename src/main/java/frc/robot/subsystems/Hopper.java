@@ -5,7 +5,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,6 +17,21 @@ public class Hopper extends SubsystemBase {
 
   public static TalonSRX hopperMotorFront = new TalonSRX(Constants.HOPPER_MOTOR_FRONT);
   public static TalonSRX hopperMotorBack = new TalonSRX(Constants.HOPPER_MOTOR_BACK);
+
+
+  public void setHopperMotor(XboxController controller, int axis){
+    double speed = controller.getRawAxis(axis);
+    hopperMotorFront.setNeutralMode(NeutralMode.Brake);
+    hopperMotorBack.setNeutralMode(NeutralMode.Brake);
+    hopperMotorBack.follow(hopperMotorFront);
+    if (Math.abs(speed) > 0.1) {
+      hopperMotorFront.set(ControlMode.PercentOutput, controller.getRawAxis(axis));
+    }
+    else {
+      hopperMotorFront.set(ControlMode.PercentOutput, 0);
+    }
+   
+  }
 
 
 
