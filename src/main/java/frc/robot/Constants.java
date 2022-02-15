@@ -61,6 +61,7 @@ public final class Constants {
     public static final int OPERATOR_RIGHT_AXIS_Y = 5;
 
     //HOPPER
+
     public static final int HOPPER_MOTOR_FRONT = 6;
     public static final int HOPPER_MOTOR_BACK = 5;
 
@@ -70,8 +71,15 @@ public final class Constants {
     public static final double HOPPER_COMBINED_SPEED = 0.40;
     public static final double HOPPER_PULL_SPEED = 0.2;
 
+
+
     //Tailgate
     public static final int TAILGATE_BUTTON = 6;
+
+
+    //Hook
+    public static final int HOOK_BUTTON = 9;
+
 
     //Winch
     public static final int WINCH_MOTOR = 7;

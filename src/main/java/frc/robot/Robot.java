@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
@@ -40,9 +42,12 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Hopper hopper = new Hopper();
   public static Tailgate tailgate = new Tailgate();
+
+  public static HookSolenoid hook = new HookSolenoid();
+
   public static Winch winch = new Winch();
 
-//  Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+  public static Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
 
   public static RobotContainer m_robotContainer;
@@ -78,7 +83,7 @@ public class Robot extends TimedRobot {
    // m_robotDrive = new MecanumDrive(DriveTrain.leftFrontDriveMotor, DriveTrain.leftBackDriveMotor, DriveTrain.rightFrontDriveMotor, DriveTrain.rightBackDriveMotor);
 
    // llmain.LL_Data();
-
+/*
     myCameraThread = new CameraThread();
     CameraServer.getInstance();
     usbCamera1 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA1);
@@ -94,7 +99,7 @@ public class Robot extends TimedRobot {
     myCameraThread.start();
     myCameraThread.setResolutionHigh();
     myCameraThread.getCameraConfig();
-
+*/
     m_autonomousCommand = (new AutoCommand());
 
 
