@@ -27,10 +27,6 @@ public class RobotContainer {
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
   public RobotContainer() {
   
     //DriveTrain
