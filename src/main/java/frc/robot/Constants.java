@@ -79,6 +79,9 @@ public final class Constants {
     //ALL END
     public static final int MOTOR_STOP = 0;
 
+    //Hook
+    public static final int HOOK_BUTTON = 9;
+
 
 
 

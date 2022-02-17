@@ -2,6 +2,7 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.subsystems.HookSolenoid;
 
@@ -13,7 +14,7 @@ public class HookCommand extends CommandBase {
 
     public HookCommand() {
 
-        addRequirements(Robot.hook);
+        addRequirements(Robot.hookSolenoid);
        
         }
 
@@ -24,7 +25,7 @@ public class HookCommand extends CommandBase {
 
     @Override
     public void execute() {
-        Robot.hook.HookSolenoidControl(HookSolenoid.HookDirection.kUp);
+        (Robot.hookSolenoid).HookSolenoidControl(HookSolenoid.HookDirection.kUp);
     }
 
     @Override
@@ -32,13 +33,13 @@ public class HookCommand extends CommandBase {
     }
 
     public void end() {
-        Robot.hook.HookSolenoidControl(HookSolenoid.HookDirection.kDown);
+        (Robot.hookSolenoid).HookSolenoidControl(HookSolenoid.HookDirection.kDown);
     }
 
    
     @Override
     public boolean isFinished() {
-        Robot.hook.HookSolenoidControl(HookSolenoid.HookDirection.kDown);
+        (Robot.hookSolenoid).HookSolenoidControl(HookSolenoid.HookDirection.kDown);
         return false;
     }
 

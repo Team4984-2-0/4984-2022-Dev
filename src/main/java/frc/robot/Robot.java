@@ -42,7 +42,8 @@ public class Robot extends TimedRobot {
   public static DriveTrain driveTrain = new DriveTrain();
   public static Hopper hopper = new Hopper();
   public static Tailgate tailgate = new Tailgate();
-  public static Winch winch = new Winch();
+  public static HookSolenoid hookSolenoid = new HookSolenoid();
+
 
   public static Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
@@ -162,7 +163,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-    Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
+    //Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
   }
 
