@@ -20,9 +20,9 @@ public class RobotContainer {
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
 
 
-  JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
-  JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
-  JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
+ // JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
+ // JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
+ // JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
 
 
 
@@ -48,9 +48,9 @@ public class RobotContainer {
 
    //tailgateButton.whenActive(new TailgateCommand());
 
-   indeHopperButton.whileHeld(new HopperIndeCommand());
-   simHopperButton.whileHeld(new HopperSimCommand());
-   pullHopperButton.whileHeld(new HopperPullCommand());
+  // indeHopperButton.whileHeld(new HopperIndeCommand());
+  // simHopperButton.whileHeld(new HopperSimCommand());
+  // pullHopperButton.whileHeld(new HopperPullCommand());
 
 
 

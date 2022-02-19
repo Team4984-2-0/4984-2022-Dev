@@ -51,9 +51,9 @@ public final class Constants {
     //BUTTON GROUPS
     public static final int DRIVE_STRAIGHT_BUTTON = 1;
     public static final int DRIVE_REVERSE_BUTTON = 2;
-    public static final int OPERATOR_HOPPER_INDE = 1;
-    public static final int OPERATOR_HOPPER_SIM = 2;
-    public static final int OPERATOR_HOPPER_PULL = 3;
+   // public static final int OPERATOR_HOPPER_INDE = 1;
+   // public static final int OPERATOR_HOPPER_SIM = 2;
+   // public static final int OPERATOR_HOPPER_PULL = 3;
 
     public static final int OPERATOR_LEFT_AXIS_X = 0;
     public static final int OPERATOR_LEFT_AXIS_Y = 1;
