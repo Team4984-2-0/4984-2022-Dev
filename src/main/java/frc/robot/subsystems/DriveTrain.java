@@ -49,15 +49,15 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() { 
 
-    //  leftBackDriveMotor.follow(leftFrontDriveMotor);
-    //  rightBackDriveMotor.follow(rightFrontDriveMotor);
+      leftBackDriveMotor.follow(leftFrontDriveMotor);
+      rightBackDriveMotor.follow(rightFrontDriveMotor);
 
-   // leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-   // rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
+    leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
+    rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
 
-   // drive = new DifferentialDrive(m_left, m_right);
+    drive = new DifferentialDrive(m_left, m_right);
 
-   // drive.setSafetyEnabled(false);
+    drive.setSafetyEnabled(false);
 
     //Maybe Print out encoder values
     //System.out.println(drive);
@@ -97,15 +97,15 @@ public class DriveTrain extends SubsystemBase {
   }
   public static void Drive(double left, double right) {
 
-    leftBackDriveMotor.follow(leftFrontDriveMotor);
-    rightBackDriveMotor.follow(rightFrontDriveMotor);
+   // leftBackDriveMotor.follow(leftFrontDriveMotor);
+  //  rightBackDriveMotor.follow(rightFrontDriveMotor);
 
-    drive.setSafetyEnabled(false);
+   // drive.setSafetyEnabled(false);
 
-    drive = new DifferentialDrive(m_left, m_right);
+   // drive = new DifferentialDrive(m_left, m_right);
     
-    leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-    rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
+  //  leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
+   // rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
 
     leftFrontDriveMotor.set(left);
     rightFrontDriveMotor.set(right);
