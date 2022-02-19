@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -47,6 +50,8 @@ public class Robot extends TimedRobot {
   public static RobotContainer m_robotContainer;
 
   public static MecanumDrive m_robotDrive;
+
+  public static Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -157,12 +162,13 @@ public class Robot extends TimedRobot {
   @Override
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
+    DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
     Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
     Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
     Pneumatics.TailgateSoleniodEnable();
     Pneumatics.hookLSolenoidEnable();
     Pneumatics.hookRolenoidEnable();
-    DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
+  //  Pneumatics.compressorEnable();
   }
 
   @Override

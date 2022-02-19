@@ -13,7 +13,7 @@ import frc.robot.RobotContainer;
 public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
 
- // public static Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+  //public static Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
  // public static boolean pcmEnabled = pcmCompressor.enabled();
  // public static boolean pressureSwitch = pcmCompressor.getPressureSwitchValue();
@@ -45,6 +45,14 @@ public class Pneumatics extends SubsystemBase {
     hookRSolenoid.toggle();
     }
   }
+
+  public static void compressorEnable (){
+    // hookRSolenoid.set(true);
+    if(RobotContainer.operatorController.getYButtonPressed()){
+//     pcmCompressor.enabled();
+        //pcmEnabled
+     }
+    }
 
 
 
