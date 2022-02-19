@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -21,8 +22,6 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.Map;
-
-import org.opencv.highgui.HighGui;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
@@ -51,6 +50,8 @@ public class Robot extends TimedRobot {
   public static RobotContainer m_robotContainer;
 
   public static MecanumDrive m_robotDrive;
+
+  public static Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -161,60 +162,13 @@ public class Robot extends TimedRobot {
   @Override
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
-
-    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-    //Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
-  }
-
-  @Override
-  public void testInit() {
-    // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
-  }
-
-  /** This function is called periodically during test mode. */
-  @Override
-  public void testPeriodic() {}
-
-  public static UsbCamera usbCamera1 = null;
-  public static UsbCamera usbCamera2 = null;
-  public class CameraThread extends Thread {
-    final int CAMERA1 = 0;
-    final int CAMERA2 = 1;
-   private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
-
-    VideoSink server;
-    
-    public void run(){
-        System.out.println("CameraThread running");
-
-     }
-
-     public void setResolutionLow(){
-        System.out.println("CameraThread rsetResolutionLow running");
-        usbCamera1.setResolution(150, 150);
-        usbCamera1.setFPS(Constants.CAMERA1_FPS);
-
+    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
     }
-
-    public void setResolutionHigh(){
-        System.out.println("CameraThread rsetResolutionHigh running");
-        usbCamera1.setResolution(150, 150);
-        usbCamera1.setFPS(Constants.CAMERA1_FPS);
-    }
-
-    public void setCameraSource(){
-        System.out.println("CameraThread setCameraSource running");
-        server.setSource(usbCamera1);
-        SmartDashboard.putString("My Key", "Hello");
-    }
-
     public void getCameraConfig(){
         System.out.println("CameraThread getPrintCameraConfig running");
         String cameraConfig; 
         cameraConfig = usbCamera1.getConfigJson();
-        if (cameraConfig.isEmpty() == false) {
             System.out.println(cameraConfig.toString()); //print to console
         }
     }
