@@ -4,16 +4,13 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.TailgateCommand;
 
 
 public class Tailgate extends SubsystemBase {
   public enum TailgateDirection{kOut, kIn};
   
-  private Solenoid TailgateSet;
+  //private Solenoid TailgateSet;
 
   public Tailgate() {
    // TailgateSet = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
