@@ -27,6 +27,10 @@ public class Pneumatics extends SubsystemBase {
     tailgateSolenoid.set(true);
   }
 
+  public static void TailgateDisableCommand () {
+    tailgateSolenoid.set(false);
+  }
+
   public static void TailgateSoleniodEnable (){
  //   tailgateSolenoid.set(true);
     //if()
