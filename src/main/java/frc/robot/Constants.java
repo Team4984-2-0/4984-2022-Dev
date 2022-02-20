@@ -39,8 +39,8 @@ public final class Constants {
 
   
     //SparkMax OpenRamp Rate
-    public static final double OPEN_LEFT_LOOP_RATE = 0.15;
-    public static final double OPEN_RIGHT_LOOP_RATE = 0.15;
+    public static final double OPEN_LEFT_LOOP_RATE = 0.01;
+    public static final double OPEN_RIGHT_LOOP_RATE = 0.01;
 
 
     //CAMERA FUNCTIONS

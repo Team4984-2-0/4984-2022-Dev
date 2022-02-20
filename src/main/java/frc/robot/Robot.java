@@ -122,7 +122,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+
+
+    //Maybe lock up winch
+
+   // teleRunCommand.stop();
+
+  }
 
   @Override
   public void disabledPeriodic() {}
@@ -178,7 +185,7 @@ public class Robot extends TimedRobot {
     teleRunCommand.Run();
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
 
-    
+
 
   }
 

@@ -49,11 +49,14 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() { 
 
+    leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
+    leftBackDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
+    rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
+    rightBackDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE); 
+    
       leftBackDriveMotor.follow(leftFrontDriveMotor);
       rightBackDriveMotor.follow(rightFrontDriveMotor);
 
-    leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-    rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
 
     drive = new DifferentialDrive(m_left, m_right);
 
@@ -66,7 +69,7 @@ public class DriveTrain extends SubsystemBase {
 
   public void initDefaultCommand() {
 
-    setDefaultCommand(new TankDriveCommand(true));
+   // setDefaultCommand(new TankDriveCommand(true));
 
 
   }
@@ -79,6 +82,7 @@ public class DriveTrain extends SubsystemBase {
 
   // A command that turns the Robot a certain amount of degrees in place.
   
+  /*
 
   public static void tankDriveLeft(Joystick joystick) {
     leftFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
@@ -94,18 +98,9 @@ public class DriveTrain extends SubsystemBase {
 
   public void reverseTankDriveRight(Joystick joystick) {
     rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-  }
+  }  
+ */ 
   public static void Drive(double left, double right) {
-
-   // leftBackDriveMotor.follow(leftFrontDriveMotor);
-  //  rightBackDriveMotor.follow(rightFrontDriveMotor);
-
-   // drive.setSafetyEnabled(false);
-
-   // drive = new DifferentialDrive(m_left, m_right);
-    
-  //  leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-   // rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
 
     leftFrontDriveMotor.set(left);
     rightFrontDriveMotor.set(right);
