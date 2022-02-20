@@ -19,6 +19,8 @@ public class RobotContainer {
 
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
 
+  JoystickButton outtakeAllButton = new JoystickButton(operatorController, Constants.OUTTAKE_ALL_BUTTON);
+
 
  // JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
  // JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
@@ -45,6 +47,8 @@ public class RobotContainer {
 
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
+
+   outtakeAllButton.whileHeld(new outtakeAllCommand());
 
    //tailgateButton.whenActive(new TailgateCommand());
 
