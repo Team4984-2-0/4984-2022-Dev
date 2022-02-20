@@ -18,6 +18,7 @@ import frc.robot.commands.AutoCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
 import frc.robot.commands.HopperSimCommand;
+import frc.robot.commands.teleRunCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -158,17 +159,26 @@ public class Robot extends TimedRobot {
 
   }
 
+  public static void teleRun () {
+
+   // Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
+  //  Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
+   // Pneumatics.TailgateSoleniodEnable();
+   // Pneumatics.hookLSolenoidEnable();
+   // Pneumatics.hookRolenoidEnable();
+  
+
+  }
+
 
   @Override
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
+    
+    teleRunCommand.Run();
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
-    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-    Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
-    Pneumatics.TailgateSoleniodEnable();
-    Pneumatics.hookLSolenoidEnable();
-    Pneumatics.hookRolenoidEnable();
-  //  Pneumatics.compressorEnable();
+
+
   }
 
   @Override

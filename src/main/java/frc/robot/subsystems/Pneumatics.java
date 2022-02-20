@@ -23,6 +23,9 @@ public class Pneumatics extends SubsystemBase {
   public static Solenoid hookRSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 1);
   public static Solenoid hookLSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 2);
 
+  public static void TailgateEnableCommand (){
+    tailgateSolenoid.set(true);
+  }
 
   public static void TailgateSoleniodEnable (){
  //   tailgateSolenoid.set(true);
