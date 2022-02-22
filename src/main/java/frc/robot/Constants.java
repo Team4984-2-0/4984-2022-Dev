@@ -72,6 +72,7 @@ public final class Constants {
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 6;
+    public static final int OUTTAKE_ALL_BUTTON = 9;
 
     //Winch
     public static final int WINCH_MOTOR = 7;

@@ -18,6 +18,7 @@ import frc.robot.commands.AutoCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
 import frc.robot.commands.HopperSimCommand;
+import frc.robot.commands.teleRunCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -158,12 +159,63 @@ public class Robot extends TimedRobot {
 
   }
 
+  public static void teleRun () {
+
+   // Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
+  //  Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
+   // Pneumatics.TailgateSoleniodEnable();
+   // Pneumatics.hookLSolenoidEnable();
+   // Pneumatics.hookRolenoidEnable();
+  
+
+  }
+
 
   @Override
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
+    
+    teleRunCommand.Run();
     DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
-    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
+
+
+  }
+
+  @Override
+  public void testInit() {
+    // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
+  }
+
+  /** This function is called periodically during test mode. */
+  @Override
+  public void testPeriodic() {}
+
+  public static UsbCamera usbCamera1 = null;
+  public static UsbCamera usbCamera2 = null;
+  public class CameraThread extends Thread {
+    final int CAMERA1 = 0;
+    final int CAMERA2 = 1;
+   private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
+
+    VideoSink server;
+    
+    public void run(){
+        System.out.println("CameraThread running");
+
+     }
+
+     public void setResolutionLow(){
+        System.out.println("CameraThread rsetResolutionLow running");
+        usbCamera1.setResolution(150, 150);
+        usbCamera1.setFPS(Constants.CAMERA1_FPS);
+
+    }
+
+    public void setResolutionHigh(){
+        System.out.println("CameraThread rsetResolutionHigh running");
+        usbCamera1.setResolution(150, 150);
+        usbCamera1.setFPS(Constants.CAMERA1_FPS);
     }
     public void getCameraConfig(){
         System.out.println("CameraThread getPrintCameraConfig running");
