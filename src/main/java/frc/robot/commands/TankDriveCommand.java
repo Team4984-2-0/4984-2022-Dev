@@ -10,7 +10,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
@@ -44,8 +43,8 @@ public class TankDriveCommand extends CommandBase {
     DriveTrain.setCoastMode();
 
 
-    double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
-    double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+   // double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+   // double y =  Robot.m_robotContainer.getDriverLeft().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
 
  //   System.out.println(x);
 
