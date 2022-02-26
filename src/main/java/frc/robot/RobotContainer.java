@@ -22,6 +22,9 @@ public class RobotContainer {
   JoystickButton outtakeAllButton = new JoystickButton(operatorController, Constants.OUTTAKE_ALL_BUTTON);
 
 
+ // JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
+ // JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
+ // JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
 
 
 

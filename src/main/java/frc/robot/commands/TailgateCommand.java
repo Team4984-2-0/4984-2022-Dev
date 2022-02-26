@@ -20,17 +20,17 @@ public class TailgateCommand extends CommandBase {
 
   @Override
   public void execute() {
-    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kOut);
+    //Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kOut);
   }
 
   @Override
   public boolean isFinished() {
-    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
+    //Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
      return false;
   }
 
   public void end() {
-    Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
+    //Robot.tailgate.TailgateSolenoid(Tailgate.TailgateDirection.kIn);
   }
 
  
