@@ -77,6 +77,11 @@ public class DriveTrain extends SubsystemBase {
     rightFrontDriveMotor.setIdleMode(IdleMode.kCoast);
   }
 
+  public static void setBrakeMode(){
+    leftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+    rightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+  }
+
   // A command that turns the Robot a certain amount of degrees in place.
   
 
