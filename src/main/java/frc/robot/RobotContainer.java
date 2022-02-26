@@ -48,13 +48,9 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-<<<<<<< HEAD
-   tailgateButton.whileHeld(new TailgateCommand());
-=======
    outtakeAllButton.whileHeld(new outtakeAllCommand());
 
    //tailgateButton.whenActive(new TailgateCommand());
->>>>>>> main
 
   // indeHopperButton.whileHeld(new HopperIndeCommand());
   // simHopperButton.whileHeld(new HopperSimCommand());
