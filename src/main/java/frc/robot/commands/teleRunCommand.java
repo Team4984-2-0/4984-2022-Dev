@@ -20,7 +20,7 @@ public class teleRunCommand extends CommandBase {
     Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
     Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
     Pneumatics.TailgateSoleniodEnable();
-   // Pneumatics.hookLSolenoidEnable();
+    Pneumatics.hookLSolenoidEnable();
     Pneumatics.hookRolenoidEnable();
   //  DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
   //  Pneumatics.compressorEnable();
@@ -30,7 +30,7 @@ public class teleRunCommand extends CommandBase {
 
   public static void stop (){
 
-    Pneumatics.hookRSolenoid.set(true);
+    //Pneumatics.hookRSolenoid.set(true);
   }
 
   public teleRunCommand() {

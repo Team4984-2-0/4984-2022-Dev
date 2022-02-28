@@ -10,10 +10,14 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.shuffleboard.SimpleWidget;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import frc.robot.commands.AutoCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
@@ -24,10 +28,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.Map;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoSink;
 import edu.wpi.first.cscore.VideoSource;
+import edu.wpi.first.networktables.NetworkTableEntry;
 
 
 /**
@@ -41,18 +48,20 @@ public class Robot extends TimedRobot {
 
   public static DriveTrain driveTrain = new DriveTrain();
   public static Hopper hopper = new Hopper();
-  public static Tailgate tailgate = new Tailgate();
   public static Winch winch = new Winch();
   public static Pneumatics pneumatics = new Pneumatics();
-
-//  Compressor compressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-
 
   public static RobotContainer m_robotContainer;
 
   public static MecanumDrive m_robotDrive;
 
+  public static double rampRateMax;
+
+  public static double maxRevRate = 0.1;
+
   public static Compressor comp = new Compressor(PneumaticsModuleType.CTREPCM);
+
+ 
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -102,13 +111,6 @@ public class Robot extends TimedRobot {
 
     m_autonomousCommand = (new AutoCommand());
 
-
-    SmartDashboard.putData("Hopper", new Hopper());
-    Shuffleboard.update();
-
-
-    //Shuffleboard Data
-
     ShuffleboardLayout hopperCommand = Shuffleboard.getTab("Commands")
       .getLayout("Hopper", BuiltInLayouts.kList)
       .withSize(2, 3)
@@ -118,7 +120,20 @@ public class Robot extends TimedRobot {
       hopperCommand.add(new HopperIndeCommand());
       hopperCommand.add(new HopperSimCommand());
 
+
+    SmartDashboard.putData("Hopper", new Hopper());
+
+
+    DriveTrain.setCoastMode();
+
+
+  
+  Shuffleboard.update();
+
+
+
   }
+  
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
@@ -181,11 +196,39 @@ public class Robot extends TimedRobot {
   @Override
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
+
+    rampRateMax = DriveTrain.rampRateTableEntry.getDouble(DriveTrain.defualtRamp);
+
+    
     
     teleRunCommand.Run();
-    DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
+    DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight)));
+
+    if(RobotContainer.driverJoystickLeft.getRawAxis(1) == 0.1){
+
+      DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft-maxRevRate)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight-maxRevRate)));
+
+      DriveTrain.setBrakeMode();
 
 
+    }
+
+    if(RobotContainer.driverJoystickRight.getRawAxis(1) == 0.1){
+
+      DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft-maxRevRate)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight-maxRevRate)));
+
+      DriveTrain.setBrakeMode();
+
+
+    }
+
+      DriveTrain.setBrakeMode();
 
   }
 
