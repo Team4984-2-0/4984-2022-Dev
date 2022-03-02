@@ -36,20 +36,20 @@ public class RobotContainer {
   
     //DriveTrain
 
-   driverJoystickLeft.getThrottle();
-   driverJoystickRight.getThrottle();
+  // driverJoystickLeft.getThrottle();
+  // driverJoystickRight.getThrottle();
    
-   driverJoystickLeft.getRawAxis(1);
-   driverJoystickRight.getRawAxis(1);
+  // driverJoystickLeft.getRawAxis(1);
+  // driverJoystickRight.getRawAxis(1);
 
-   driverJoystickRight.getY();
-   driverJoystickLeft.getY();
+  // driverJoystickRight.getY();
+  // driverJoystickLeft.getY();
 
 
    //Commands
 
-   StraightCommand.whileHeld(new DriveStraightCommand());
-   ReverseDrive.whileHeld(new ReverseTankDriveCommand());
+  // StraightCommand.whileHeld(new DriveStraightCommand());
+  // ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
    outtakeAllButton.whileHeld(new outtakeAllCommand());
 
@@ -67,8 +67,8 @@ public class RobotContainer {
 
 
    //TODO TRY THESE VALUES
-   driverJoystickLeft.getThrottle();
-   driverJoystickRight.getThrottle();
+ //  driverJoystickLeft.getThrottle();
+  // driverJoystickRight.getThrottle();
 
    //throttle();
  
