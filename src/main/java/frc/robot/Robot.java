@@ -144,6 +144,8 @@ public class Robot extends TimedRobot {
 
    // teleRunCommand.stop();
 
+   DriveTrain.setCoastMode();
+
   }
 
   @Override
