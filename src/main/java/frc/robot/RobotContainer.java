@@ -1,14 +1,13 @@
 package frc.robot;
 
-import edu.wpi.first.cscore.AxisCamera;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.Tailgate;
 
 public class RobotContainer {
+  
   public static Joystick driverJoystickLeft = new Joystick(Constants.DRIVER_JOYSTICK_LEFT);
   public static Joystick driverJoystickRight= new Joystick(Constants.DRIVER_JOYSTICK_RIGHT);
 
@@ -20,9 +19,12 @@ public class RobotContainer {
 
   JoystickButton tailgateButton = new JoystickButton(operatorController, Constants.TAILGATE_BUTTON);
 
-  JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
-  JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
-  JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
+  JoystickButton outtakeAllButton = new JoystickButton(operatorController, Constants.OUTTAKE_ALL_BUTTON);
+
+
+ // JoystickButton indeHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_INDE);
+ // JoystickButton simHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_SIM);
+ // JoystickButton pullHopperButton = new JoystickButton(operatorController, Constants.OPERATOR_HOPPER_PULL);
 
   JoystickButton hookButton = new JoystickButton(operatorController, Constants.HOOK_BUTTON);
 
@@ -49,11 +51,13 @@ public class RobotContainer {
    StraightCommand.whileHeld(new DriveStraightCommand());
    ReverseDrive.whileHeld(new ReverseTankDriveCommand());
 
-   tailgateButton.whileHeld(new TailgateCommand());
+   outtakeAllButton.whileHeld(new outtakeAllCommand());
 
-   indeHopperButton.whileHeld(new HopperIndeCommand());
-   simHopperButton.whileHeld(new HopperSimCommand());
-   pullHopperButton.whileHeld(new HopperPullCommand());
+   //tailgateButton.whenActive(new TailgateCommand());
+
+  // indeHopperButton.whileHeld(new HopperIndeCommand());
+  // simHopperButton.whileHeld(new HopperSimCommand());
+  // pullHopperButton.whileHeld(new HopperPullCommand());
 
     hookButton.whileHeld(new HookCommand());
 

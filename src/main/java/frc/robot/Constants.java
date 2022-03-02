@@ -39,8 +39,8 @@ public final class Constants {
 
   
     //SparkMax OpenRamp Rate
-    public static final double OPEN_LEFT_LOOP_RATE = 1;
-    public static final double OPEN_RIGHT_LOOP_RATE = 1;
+    public static final double OPEN_LEFT_LOOP_RATE = 0.15;
+    public static final double OPEN_RIGHT_LOOP_RATE = 0.15;
 
 
     //CAMERA FUNCTIONS
@@ -51,9 +51,9 @@ public final class Constants {
     //BUTTON GROUPS
     public static final int DRIVE_STRAIGHT_BUTTON = 1;
     public static final int DRIVE_REVERSE_BUTTON = 2;
-    public static final int OPERATOR_HOPPER_INDE = 1;
-    public static final int OPERATOR_HOPPER_SIM = 2;
-    public static final int OPERATOR_HOPPER_PULL = 3;
+   // public static final int OPERATOR_HOPPER_INDE = 1;
+   // public static final int OPERATOR_HOPPER_SIM = 2;
+   // public static final int OPERATOR_HOPPER_PULL = 3;
 
     public static final int OPERATOR_LEFT_AXIS_X = 0;
     public static final int OPERATOR_LEFT_AXIS_Y = 1;
@@ -75,6 +75,7 @@ public final class Constants {
 
     //Tailgate
     public static final int TAILGATE_BUTTON = 6;
+    public static final int OUTTAKE_ALL_BUTTON = 9;
 
 
     //Hook
