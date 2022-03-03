@@ -13,15 +13,15 @@ import frc.robot.RobotContainer;
 public class Pneumatics extends SubsystemBase {
   /** Creates a new Pneumatics. */
 
-  //public static Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+ //public static Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
 
  // public static boolean pcmEnabled = pcmCompressor.enabled();
  // public static boolean pressureSwitch = pcmCompressor.getPressureSwitchValue();
  // public static double current = pcmCompressor.getCurrent();
 
-  public static Solenoid tailgateSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
-  public static Solenoid hookRSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 1);
-  public static Solenoid hookLSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 2);
+  static Solenoid tailgateSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
+  static Solenoid hookRSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 1);
+  static Solenoid hookLSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 2);
 
   public static void TailgateEnableCommand (){
     tailgateSolenoid.set(true);

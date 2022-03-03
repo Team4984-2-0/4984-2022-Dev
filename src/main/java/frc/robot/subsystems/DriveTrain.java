@@ -1,30 +1,28 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.TankDriveCommand;
+import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
-import com.revrobotics.RelativeEncoder;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 
 
 public class DriveTrain extends SubsystemBase {
-
- // Gyro gyro = new ADXRS450_Gyro(SPI.Port.kMXP);
 
 
   public static CANSparkMax leftFrontDriveMotor = new CANSparkMax(Constants.MOTOR_LEFT_FRONT, MotorType.kBrushless);
@@ -32,28 +30,42 @@ public class DriveTrain extends SubsystemBase {
   public static CANSparkMax rightFrontDriveMotor = new CANSparkMax(Constants.MOTOR_RIGHT_FRONT, MotorType.kBrushless);
   public static CANSparkMax rightBackDriveMotor = new CANSparkMax(Constants.MOTOR_RIGHT_BACK, MotorType.kBrushless);
 
-  public RelativeEncoder leftFrontDriveEncoder = leftFrontDriveMotor.getEncoder();
-  public RelativeEncoder rightFrontDriveEncoder = rightFrontDriveMotor.getEncoder();
-
-  public double driveTrainEncoder;
-
-
-  public boolean done;
-  
-  public boolean myautotoggle;
-
-  public static DifferentialDrive drive;
-
   public static MotorControllerGroup m_right = new MotorControllerGroup(rightFrontDriveMotor, rightBackDriveMotor);
   public static MotorControllerGroup m_left = new MotorControllerGroup(leftFrontDriveMotor, leftBackDriveMotor);
 
+  public static DifferentialDrive drive;
+
+  public static NetworkTableEntry rampRateTableEntry;
+
+  public static double defualtRamp = 15;
+
+  public static double globalRampRate = 1;
+
+  public static double globalDeadZoneLeft = 1.7;
+  public static double globalDeadZoneRight = 1.7;
+
+
   public DriveTrain() { 
+    
+
+    
+
+    rampRateTableEntry = Shuffleboard.getTab("Commands")
+    .add("Differential Ramp Rate", defualtRamp)
+    .withWidget(BuiltInWidgets.kNumberSlider)
+    .withProperties(Map.of("min", 0, "max", 100)) // specify widget properties here
+    .getEntry();
+    
+    Shuffleboard.update();
+  
+    DriveTrain.rightFrontDriveMotor.setOpenLoopRampRate(globalRampRate);
+    DriveTrain.leftFrontDriveMotor.setOpenLoopRampRate(globalRampRate);
+    DriveTrain.rightBackDriveMotor.setOpenLoopRampRate(globalRampRate);
+    DriveTrain.leftBackDriveMotor.setOpenLoopRampRate(globalRampRate);
 
       leftBackDriveMotor.follow(leftFrontDriveMotor);
       rightBackDriveMotor.follow(rightFrontDriveMotor);
 
-    leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-    rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
 
     drive = new DifferentialDrive(m_left, m_right);
 
@@ -64,9 +76,10 @@ public class DriveTrain extends SubsystemBase {
    
   }
 
+
   public void initDefaultCommand() {
 
-    setDefaultCommand(new TankDriveCommand(true));
+   // setDefaultCommand(new TankDriveCommand(true));
 
 
   }
@@ -74,9 +87,12 @@ public class DriveTrain extends SubsystemBase {
 
   public static void setCoastMode() {
     leftFrontDriveMotor.setIdleMode(IdleMode.kCoast);
+    leftBackDriveMotor.setIdleMode(IdleMode.kCoast);
     rightFrontDriveMotor.setIdleMode(IdleMode.kCoast);
+    rightBackDriveMotor.setIdleMode(IdleMode.kCoast);
   }
 
+<<<<<<< HEAD
   public static void setBrakeMode(){
     leftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
     rightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
@@ -96,29 +112,32 @@ public class DriveTrain extends SubsystemBase {
   public void reverseTankDriveLeft(Joystick joystick) {
     leftFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
   }
+=======
+  public static void setBrakeMode() {
+    leftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+    leftBackDriveMotor.setIdleMode(IdleMode.kBrake);
+    rightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+    rightBackDriveMotor.setIdleMode(IdleMode.kBrake);
+  }    
+>>>>>>> main
 
-  public void reverseTankDriveRight(Joystick joystick) {
-    rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
-  }
   public static void Drive(double left, double right) {
 
-   // leftBackDriveMotor.follow(leftFrontDriveMotor);
-  //  rightBackDriveMotor.follow(rightFrontDriveMotor);
-
-   // drive.setSafetyEnabled(false);
-
-   // drive = new DifferentialDrive(m_left, m_right);
-    
-  //  leftFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_LEFT_LOOP_RATE);
-   // rightFrontDriveMotor.setOpenLoopRampRate(Constants.OPEN_RIGHT_LOOP_RATE);
+    setBrakeMode();
 
     leftFrontDriveMotor.set(left);
+    leftBackDriveMotor.set(left);
+
     rightFrontDriveMotor.set(right);
+    rightBackDriveMotor.set(right);
   }
 
-  public void ResetEncoders() {
+  
+
+  /*public void ResetEncoders() {
     leftFrontDriveEncoder.setPosition(0.0);  
     rightFrontDriveEncoder.setPosition(0.0);  
   }
 
+  */
 }
