@@ -11,9 +11,9 @@ import frc.robot.Robot;
 import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Pneumatics;
 
-public class outtakeAllCommand extends CommandBase {
+public class outtakeStopCommand extends CommandBase {
   /** Creates a new outtakeAllCommand. */
-  public outtakeAllCommand() {
+  public outtakeStopCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.pneumatics);
     addRequirements(Robot.hopper);
@@ -29,8 +29,8 @@ public class outtakeAllCommand extends CommandBase {
   @Override
   public void execute() {
 
-    Hopper.hopperSimControler();
-    Pneumatics.TailgateEnableCommand();
+    Hopper.hopperEnd();
+    Pneumatics.TailgateDisableCommand();
 
 
   }

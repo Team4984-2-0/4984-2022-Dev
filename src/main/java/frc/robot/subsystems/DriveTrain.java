@@ -2,15 +2,26 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.commands.TankDriveCommand;
+
 import java.util.Map;
+
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import edu.wpi.first.wpilibj.SPI; // for navx
+
 
 
 public class DriveTrain extends SubsystemBase {
@@ -27,6 +38,18 @@ public class DriveTrain extends SubsystemBase {
   public static DifferentialDrive drive;
 
   public static NetworkTableEntry rampRateTableEntry;
+
+  public static RelativeEncoder leftFrontDriveEncoder = leftFrontDriveMotor.getEncoder();
+  public static RelativeEncoder leftBackDriveEncoder = leftBackDriveMotor.getEncoder();
+  public static RelativeEncoder rightFrontDriveEncoder = rightFrontDriveMotor.getEncoder();
+  public static RelativeEncoder rightBackDriveEncoder = rightBackDriveMotor.getEncoder();
+
+  public double driveTrainEncoder;
+  public static AHRS m_driveTrainGyro; // navX
+
+  public boolean done;
+
+  public boolean myautotoggle;
 
 
 
@@ -56,18 +79,27 @@ public class DriveTrain extends SubsystemBase {
 
     drive.setSafetyEnabled(false);
 
-    //Maybe Print out encoder values
-    //System.out.println(drive);
-   
+ 
   }
+   
+
+
 
 
   public void initDefaultCommand() {
+    setDefaultCommand(new TankDriveCommand());
+    
+  }
 
-   // setDefaultCommand(new TankDriveCommand(true));
+  
 
+  // A command that turns the Robot a certain amount of degrees in place.
+  public static void NavXTurn() {
 
   }
+
+
+
 
 
   public static void setCoastMode() {
@@ -95,5 +127,34 @@ public class DriveTrain extends SubsystemBase {
     rightBackDriveMotor.set(right);
   }
 
+  public static void resetEncoders (){
+
+    leftFrontDriveEncoder.setPosition(0.0);
+    rightFrontDriveEncoder.setPosition(0.0);
+
+  }
+
+  public void tankDriveLeft(Joystick joystick) {
+    leftFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+    //leftBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void tankDriveRight(Joystick joystick) {
+    rightFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+    //rightBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void reverseTankDriveLeft(Joystick joystick) {
+    leftFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  //  leftBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void reverseTankDriveRight(Joystick joystick) {
+    rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+   // rightBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+
   
+
 }
