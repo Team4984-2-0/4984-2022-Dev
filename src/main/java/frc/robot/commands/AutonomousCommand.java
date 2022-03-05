@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 
@@ -20,15 +21,14 @@ public class AutonomousCommand extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
 
-
    
     addCommands(
     
-   new outtakeAllCommand()
+  // new outtakeAllCommand()
    // new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
     );
-   andThen(new outtakeStopCommand());
-   andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
+   //andThen(new outtakeStopCommand());
+   //andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
     
 
    

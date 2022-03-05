@@ -94,7 +94,7 @@ public final class Constants {
     public static final double RIGHT_MOTOR_1 = 0.10;
 
     // Step 3
-    public static final int DISTANCE_2 = 36;
+    public static final int DISTANCE_2 = 105;
     public static final double LEFT_MOTOR_2 = 0.20; //Back
     public static final double RIGHT_MOTOR_2 = -0.20;
 

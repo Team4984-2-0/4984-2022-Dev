@@ -129,6 +129,7 @@ public class Robot extends TimedRobot {
 
 
 
+
   }
   
 
@@ -163,7 +164,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
   //  System.out.println(Timer.getMatchTime());
-
+  SmartDashboard.putNumber("Remaining Match Time", Timer.getMatchTime());
   }
 
   @Override
@@ -196,7 +197,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     rampRateMax = DriveTrain.rampRateTableEntry.getDouble(Constants.defualtRamp);
-
+    SmartDashboard.putNumber("Remaining Match Time", Timer.getMatchTime());
    // System.out.println(DriveTrain.leftFrontDriveEncoder.getPosition()/Constants.mainEncoderValues);
 
     /*
