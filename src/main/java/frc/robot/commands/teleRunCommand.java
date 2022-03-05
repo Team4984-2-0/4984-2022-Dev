@@ -7,8 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Pneumatics;
 
 public class teleRunCommand extends CommandBase {
@@ -22,9 +20,6 @@ public class teleRunCommand extends CommandBase {
     Pneumatics.TailgateSoleniodEnable();
     Pneumatics.hookLSolenoidEnable();
     Pneumatics.hookRolenoidEnable();
-  //  DriveTrain.Drive(RobotContainer.GetDriverJoystickLeftRawAxis(1), -RobotContainer.GetDriverJoystickRightRawAxis(1));
-  //  Pneumatics.compressorEnable();
- 
 
   }
 
