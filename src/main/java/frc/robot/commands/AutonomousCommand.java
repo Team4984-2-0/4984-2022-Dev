@@ -24,11 +24,11 @@ public class AutonomousCommand extends SequentialCommandGroup {
    
     addCommands(
     
-  // new outtakeAllCommand()
+   new outtakeAllCommand()
    // new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
     );
-   //andThen(new outtakeStopCommand());
-   //andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
+   andThen(new outtakeStopCommand());
+   andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
     
 
    
