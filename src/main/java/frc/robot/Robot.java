@@ -7,34 +7,26 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
-import edu.wpi.first.wpilibj.shuffleboard.SimpleWidget;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
-import frc.robot.commands.AutoCommand;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
 import frc.robot.commands.HopperSimCommand;
+import frc.robot.commands.TankDriveCommand;
 import frc.robot.commands.teleRunCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import java.util.Map;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
-
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoSink;
 import edu.wpi.first.cscore.VideoSource;
-import edu.wpi.first.networktables.NetworkTableEntry;
 
 
 /**
@@ -82,12 +74,17 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+
   }
 
   @Override
   public void robotInit() {
 
     m_robotContainer = new RobotContainer();
+
+    DriveTrain.resetEncoders();
+
 
    // m_robotDrive = new MecanumDrive(DriveTrain.leftFrontDriveMotor, DriveTrain.leftBackDriveMotor, DriveTrain.rightFrontDriveMotor, DriveTrain.rightBackDriveMotor);
 
@@ -109,7 +106,7 @@ public class Robot extends TimedRobot {
     myCameraThread.setResolutionHigh();
     myCameraThread.getCameraConfig();
 
-    m_autonomousCommand = (new AutoCommand());
+    m_autonomousCommand = (new AutonomousCommand());
 
     ShuffleboardLayout hopperCommand = Shuffleboard.getTab("Commands")
       .getLayout("Hopper", BuiltInLayouts.kList)
@@ -129,6 +126,7 @@ public class Robot extends TimedRobot {
 
   
   Shuffleboard.update();
+
 
 
 
@@ -165,9 +163,8 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-
-    //Limelight is a studdddd
-
+  //  System.out.println(Timer.getMatchTime());
+  SmartDashboard.putNumber("Remaining Match Time", Timer.getMatchTime());
   }
 
   @Override
@@ -199,20 +196,22 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   public void teleopPeriodic() {
 
-    rampRateMax = DriveTrain.rampRateTableEntry.getDouble(DriveTrain.defualtRamp);
+    rampRateMax = DriveTrain.rampRateTableEntry.getDouble(Constants.defualtRamp);
+    SmartDashboard.putNumber("Remaining Match Time", Timer.getMatchTime());
+   // System.out.println(DriveTrain.leftFrontDriveEncoder.getPosition()/Constants.mainEncoderValues);
 
-    
+
     
     teleRunCommand.Run();
     DriveTrain.Drive(
-      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft)), 
-      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight)));
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/Constants.globalDeadZoneRight)));
 
     if(RobotContainer.driverJoystickLeft.getRawAxis(1) == 0.1){
 
       DriveTrain.Drive(
-      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft-maxRevRate)), 
-      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight-maxRevRate)));
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft-maxRevRate)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/Constants.globalDeadZoneRight-maxRevRate)));
 
       DriveTrain.setBrakeMode();
 
@@ -222,15 +221,20 @@ public class Robot extends TimedRobot {
     if(RobotContainer.driverJoystickRight.getRawAxis(1) == 0.1){
 
       DriveTrain.Drive(
-      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/DriveTrain.globalDeadZoneLeft-maxRevRate)), 
-      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/DriveTrain.globalDeadZoneRight-maxRevRate)));
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft-maxRevRate)), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/Constants.globalDeadZoneRight-maxRevRate)));
 
       DriveTrain.setBrakeMode();
 
 
     }
 
-      DriveTrain.setBrakeMode();
+
+
+  //  TankDriveCommand.run();
+    teleRunCommand.Run();
+
+    DriveTrain.setBrakeMode();
 
   }
 

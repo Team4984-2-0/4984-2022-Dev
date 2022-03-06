@@ -4,53 +4,56 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Pneumatics;
 
-public class teleRunCommand extends CommandBase {
-  /** Creates a new teleRunCommand. */
-
-
-  public static void Run (){
-
-    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-    Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
-    Pneumatics.TailgateSoleniodEnable();
-    Pneumatics.hookLSolenoidEnable();
-    Pneumatics.hookRolenoidEnable();
-
-  }
-
-  public static void stop (){
-
-    //Pneumatics.hookRSolenoid.set(true);
-  }
-
-  public teleRunCommand() {
+public class outtakeStopCommand extends CommandBase {
+  /** Creates a new outtakeAllCommand. */
+  public outtakeStopCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Robot.pneumatics);
+    addRequirements(Robot.hopper);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    Timer.getMatchTime();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
+    Hopper.hopperEnd();
+    Pneumatics.TailgateDisableCommand();
 
 
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    Pneumatics.TailgateDisableCommand();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+
+
+    if(Timer.getMatchTime() <= 12){
+
+     return true;
+   
+    }
+
     return false;
+
+
+  
   }
 }

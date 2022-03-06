@@ -1,25 +1,24 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Robot;
-import frc.robot.RobotContainer;
+import frc.robot.commands.TankDriveCommand;
 
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
+
+
 
 
 public class DriveTrain extends SubsystemBase {
@@ -37,12 +36,18 @@ public class DriveTrain extends SubsystemBase {
 
   public static NetworkTableEntry rampRateTableEntry;
 
-  public static double defualtRamp = 15;
+  public static RelativeEncoder leftFrontDriveEncoder = leftFrontDriveMotor.getEncoder();
+  public static RelativeEncoder leftBackDriveEncoder = leftBackDriveMotor.getEncoder();
+  public static RelativeEncoder rightFrontDriveEncoder = rightFrontDriveMotor.getEncoder();
+  public static RelativeEncoder rightBackDriveEncoder = rightBackDriveMotor.getEncoder();
 
-  public static double globalRampRate = 1;
+  public double driveTrainEncoder;
+  public static AHRS m_driveTrainGyro; // navX
 
-  public static double globalDeadZoneLeft = 1.7;
-  public static double globalDeadZoneRight = 1.7;
+  public boolean done;
+
+  public boolean myautotoggle;
+
 
 
   public DriveTrain() { 
@@ -51,17 +56,17 @@ public class DriveTrain extends SubsystemBase {
     
 
     rampRateTableEntry = Shuffleboard.getTab("Commands")
-    .add("Differential Ramp Rate", defualtRamp)
+    .add("Differential Ramp Rate", Constants.defualtRamp)
     .withWidget(BuiltInWidgets.kNumberSlider)
     .withProperties(Map.of("min", 0, "max", 100)) // specify widget properties here
     .getEntry();
     
     Shuffleboard.update();
   
-    DriveTrain.rightFrontDriveMotor.setOpenLoopRampRate(globalRampRate);
-    DriveTrain.leftFrontDriveMotor.setOpenLoopRampRate(globalRampRate);
-    DriveTrain.rightBackDriveMotor.setOpenLoopRampRate(globalRampRate);
-    DriveTrain.leftBackDriveMotor.setOpenLoopRampRate(globalRampRate);
+    DriveTrain.rightFrontDriveMotor.setOpenLoopRampRate(Constants.globalRampRate);
+    DriveTrain.leftFrontDriveMotor.setOpenLoopRampRate(Constants.globalRampRate);
+    DriveTrain.rightBackDriveMotor.setOpenLoopRampRate(Constants.globalRampRate);
+    DriveTrain.leftBackDriveMotor.setOpenLoopRampRate(Constants.globalRampRate);
 
       leftBackDriveMotor.follow(leftFrontDriveMotor);
       rightBackDriveMotor.follow(rightFrontDriveMotor);
@@ -71,18 +76,27 @@ public class DriveTrain extends SubsystemBase {
 
     drive.setSafetyEnabled(false);
 
-    //Maybe Print out encoder values
-    //System.out.println(drive);
-   
+ 
   }
+   
+
+
 
 
   public void initDefaultCommand() {
+    setDefaultCommand(new TankDriveCommand());
+    
+  }
 
-   // setDefaultCommand(new TankDriveCommand(true));
+  
 
+  // A command that turns the Robot a certain amount of degrees in place.
+  public static void NavXTurn() {
 
   }
+
+
+
 
 
   public static void setCoastMode() {
@@ -110,12 +124,34 @@ public class DriveTrain extends SubsystemBase {
     rightBackDriveMotor.set(right);
   }
 
-  
+  public static void resetEncoders (){
 
-  /*public void ResetEncoders() {
-    leftFrontDriveEncoder.setPosition(0.0);  
-    rightFrontDriveEncoder.setPosition(0.0);  
+    leftFrontDriveEncoder.setPosition(0.0);
+    rightFrontDriveEncoder.setPosition(0.0);
+
   }
 
-  */
+  public void tankDriveLeft(Joystick joystick) {
+    leftFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+    //leftBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void tankDriveRight(Joystick joystick) {
+    rightFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+    //rightBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void reverseTankDriveLeft(Joystick joystick) {
+    leftFrontDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  //  leftBackDriveMotor.set(-joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+  public void reverseTankDriveRight(Joystick joystick) {
+    rightFrontDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+   // rightBackDriveMotor.set(joystick.getRawAxis(Constants.DRIVER_JOYSTICK_AXIS));
+  }
+
+
+  
+
 }

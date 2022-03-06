@@ -5,31 +5,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.subsystems.Pneumatics;
 
-public class teleRunCommand extends CommandBase {
-  /** Creates a new teleRunCommand. */
-
-
-  public static void Run (){
-
-    Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-    Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
-    Pneumatics.TailgateSoleniodEnable();
-    Pneumatics.hookLSolenoidEnable();
-    Pneumatics.hookRolenoidEnable();
-
-  }
-
-  public static void stop (){
-
-    //Pneumatics.hookRSolenoid.set(true);
-  }
-
-  public teleRunCommand() {
+public class TankDriveCommand extends CommandBase {
+  /** Creates a new TankDriveCommand. */
+  public TankDriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Robot.driveTrain);
   }
 
   // Called when the command is initially scheduled.
@@ -40,7 +22,17 @@ public class teleRunCommand extends CommandBase {
   @Override
   public void execute() {
 
+  //  Robot.driveTrain.setCoastMode();
+    
+    Robot.driveTrain.tankDriveLeft(Robot.m_robotContainer.getDriverLeft());
+    Robot.driveTrain.tankDriveRight(Robot.m_robotContainer.getDriverRight());
 
+  }
+
+  public static void run(){
+
+    Robot.driveTrain.tankDriveLeft(Robot.m_robotContainer.getDriverLeft());
+    Robot.driveTrain.tankDriveRight(Robot.m_robotContainer.getDriverRight());
 
   }
 

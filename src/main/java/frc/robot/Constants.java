@@ -51,9 +51,6 @@ public final class Constants {
     //BUTTON GROUPS
     public static final int DRIVE_STRAIGHT_BUTTON = 1;
     public static final int DRIVE_REVERSE_BUTTON = 2;
-   // public static final int OPERATOR_HOPPER_INDE = 1;
-   // public static final int OPERATOR_HOPPER_SIM = 2;
-   // public static final int OPERATOR_HOPPER_PULL = 3;
 
     public static final int OPERATOR_LEFT_AXIS_X = 0;
     public static final int OPERATOR_LEFT_AXIS_Y = 1;
@@ -64,10 +61,10 @@ public final class Constants {
     public static final int HOPPER_MOTOR_FRONT = 6;
     public static final int HOPPER_MOTOR_BACK = 5;
 
-    public static final double HOPPER_SPEED = 0.40;
-    public static final double HOPPER_INDEPENENT_SPEED = 0.40;
-    public static final double HOPPER_SIM_SPEED = 0.40;
-    public static final double HOPPER_COMBINED_SPEED = 0.40;
+    public static final double HOPPER_SPEED = 0.80;
+    public static final double HOPPER_INDEPENENT_SPEED = 0.80;
+    public static final double HOPPER_SIM_SPEED = 0.80;
+    public static final double HOPPER_COMBINED_SPEED = 0.80;
     public static final double HOPPER_PULL_SPEED = 0.2;
 
     //Tailgate
@@ -81,6 +78,25 @@ public final class Constants {
     public static final int MOTOR_STOP = 0;
 
 
+    //Drive Rates
+    public static final double defualtRamp = 15;
+
+    public static final double globalRampRate = 1;
+  
+    public static final double globalDeadZoneLeft = 1.7;
+    public static final double globalDeadZoneRight = 1.7;
+
+    public static final double mainEncoderValues = 11.791471214294434/20; //1 Encoder Inch Value ()
+
+     //Step 1
+    public static final double DISTANCE_1 = 12;
+    public static final double LEFT_MOTOR_1 = -0.10; //Forward
+    public static final double RIGHT_MOTOR_1 = 0.10;
+
+    // Step 3
+    public static final int DISTANCE_2 = 105;
+    public static final double LEFT_MOTOR_2 = 0.20; //Back
+    public static final double RIGHT_MOTOR_2 = -0.20;
 
 
 
