@@ -28,6 +28,7 @@ public class outtakeAllCommand extends CommandBase {
   @Override
   public void execute() {
 
+    Pneumatics.TailgateEnableCommand();
     Hopper.hopperSimControler();
     Pneumatics.TailgateEnableCommand();
 
@@ -37,7 +38,6 @@ public class outtakeAllCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Pneumatics.TailgateDisableCommand();
   }
 
   // Returns true when the command should end.
@@ -45,8 +45,10 @@ public class outtakeAllCommand extends CommandBase {
   public boolean isFinished() {
 
 
+
     if(Timer.getMatchTime() <= 12){
 
+      Pneumatics.TailgateDisableCommand();
      return true;
    
     }

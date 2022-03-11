@@ -18,7 +18,6 @@ import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
 import frc.robot.commands.HopperSimCommand;
-import frc.robot.commands.TankDriveCommand;
 import frc.robot.commands.teleRunCommand;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -203,6 +202,37 @@ public class Robot extends TimedRobot {
 
     
     teleRunCommand.Run();
+
+    /*
+
+    DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1))), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1))));
+
+    if(RobotContainer.driverJoystickLeft.getRawAxis(1) == 0.1){
+
+      DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1))), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1))));
+
+      DriveTrain.setBrakeMode();
+
+
+    }
+
+    if(RobotContainer.driverJoystickRight.getRawAxis(1) == 0.1){
+
+      DriveTrain.Drive(
+      ((RobotContainer.GetDriverJoystickLeftRawAxis(1))), 
+      ((-RobotContainer.GetDriverJoystickRightRawAxis(1))));
+
+      DriveTrain.setBrakeMode();
+
+
+    }
+
+    */
+
     DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft)), 
       ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/Constants.globalDeadZoneRight)));
@@ -295,11 +325,11 @@ public class Robot extends TimedRobot {
 
         
         usbCamera1.setFPS(Constants.CAMERA1_FPS);
-        usbCamera1.setBrightness(50);  
+        usbCamera1.setBrightness(Constants.CAMERA1_BRIGHTNESS);  
         usbCamera1.setExposureAuto();  
 
         usbCamera2.setFPS(Constants.CAMERA2_FPS);
-        usbCamera2.setBrightness(50);
+        usbCamera2.setBrightness(Constants.CAMERA2_BRIGHTNESS);
         usbCamera2.setExposureAuto();
   }
   }

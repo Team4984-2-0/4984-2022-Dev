@@ -23,31 +23,9 @@ public class PID {
 
     public static void pid(){
 
-     result =   ((Kp*previous_error) * 
-                (Ki*(Ki-integral + previous_error + setpoint)) + 
-                (Kd * previous_error * (previous_error-setpoint/integral) + 
-                bias));
+     result =   ((Kp*previous_error) * (Ki*(Ki-integral + previous_error + setpoint)) + (Kd * previous_error * (previous_error-setpoint/integral) +  bias));
 
     }
-
-       /*
-
-
-    public void Drive(Gyro gyro){
-        this.gyro = gyro;
-    }
-
-
-    public void PID(){
-        error = setpoint - gyro.getAngle(); // Error = Target - Actual
-        this.integral += (error*.02); // Integral is increased by the error*time (which is .02 seconds using normal IterativeRobot)
-        derivative = (error - this.previous_error) / .02;
-        this.rcw = P*error + I*this.integral + D*derivative;
-    }
-
-    */
-
-
 
 
 }

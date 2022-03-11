@@ -53,8 +53,6 @@ public class DriveTrain extends SubsystemBase {
   public DriveTrain() { 
     
 
-    
-
     rampRateTableEntry = Shuffleboard.getTab("Commands")
     .add("Differential Ramp Rate", Constants.defualtRamp)
     .withWidget(BuiltInWidgets.kNumberSlider)
@@ -69,7 +67,7 @@ public class DriveTrain extends SubsystemBase {
     DriveTrain.leftBackDriveMotor.setOpenLoopRampRate(Constants.globalRampRate);
 
       leftBackDriveMotor.follow(leftFrontDriveMotor);
-      rightBackDriveMotor.follow(rightFrontDriveMotor);
+      rightBackDriveMotor.follow(rightFrontDriveMotor); 
 
 
     drive = new DifferentialDrive(m_left, m_right);
@@ -115,13 +113,13 @@ public class DriveTrain extends SubsystemBase {
 
   public static void Drive(double left, double right) {
 
-    setBrakeMode();
+   // setBrakeMode();
 
-    leftFrontDriveMotor.set(left);
-    leftBackDriveMotor.set(left);
+    leftFrontDriveMotor.set(left/1.2);
+    leftBackDriveMotor.set(left/1.2);
 
-    rightFrontDriveMotor.set(right);
-    rightBackDriveMotor.set(right);
+    rightFrontDriveMotor.set(right/1.2);
+    rightBackDriveMotor.set(right/1.2);
   }
 
   public static void resetEncoders (){
