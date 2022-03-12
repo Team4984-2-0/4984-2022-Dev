@@ -91,15 +91,17 @@ public final class Constants {
 
     public static final double mainEncoderValues = 11.791471214294434/20; //1 Encoder Inch Value ()
 
+    public static final double DRIVER_DEVIDE_VALUE = 1.4;
+
      //Step 1
     public static final double DISTANCE_1 = 12;
     public static final double LEFT_MOTOR_1 = -0.10; //Forward
     public static final double RIGHT_MOTOR_1 = 0.10;
 
     // Step 3
-    public static final int DISTANCE_2 = 135;
-    public static final double LEFT_MOTOR_2 = 0.20; //Back
-    public static final double RIGHT_MOTOR_2 = -0.20;
+    public static final int DISTANCE_2 = 135;  //Main value of 135 encoder rotation values
+    public static final double LEFT_MOTOR_2 = 0.30; //Back
+    public static final double RIGHT_MOTOR_2 = -0.30;
 
 
 

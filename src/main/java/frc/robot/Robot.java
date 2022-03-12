@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutonomousCommand;
+import frc.robot.commands.DriveStraightCommand;
 import frc.robot.commands.HopperIndeCommand;
 import frc.robot.commands.HopperPullCommand;
 import frc.robot.commands.HopperSimCommand;
@@ -124,10 +125,10 @@ public class Robot extends TimedRobot {
 
 
   
-  Shuffleboard.update();
+    Shuffleboard.update();
 
 
-
+    isRobotReady();
 
   }
   
@@ -203,11 +204,15 @@ public class Robot extends TimedRobot {
     
     teleRunCommand.Run();
 
-    /*
+    RobotContainer.StraightCommand.whileHeld(new DriveStraightCommand()); 
+
+
 
     DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1))), 
       ((-RobotContainer.GetDriverJoystickRightRawAxis(1))));
+
+      /*
 
     if(RobotContainer.driverJoystickLeft.getRawAxis(1) == 0.1){
 
@@ -232,6 +237,8 @@ public class Robot extends TimedRobot {
     }
 
     */
+
+      /*
 
     DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft)), 
@@ -259,7 +266,7 @@ public class Robot extends TimedRobot {
 
     }
 
-
+  */
 
   //  TankDriveCommand.run();
     teleRunCommand.Run();
@@ -316,7 +323,7 @@ public class Robot extends TimedRobot {
         String cameraConfig; 
         cameraConfig = usbCamera1.getConfigJson();
         if (cameraConfig.isEmpty() == false) {
-            System.out.println(cameraConfig.toString()); //print to console
+           // System.out.println(cameraConfig.toString()); //print to console
         }
     }
 
@@ -331,7 +338,21 @@ public class Robot extends TimedRobot {
         usbCamera2.setFPS(Constants.CAMERA2_FPS);
         usbCamera2.setBrightness(Constants.CAMERA2_BRIGHTNESS);
         usbCamera2.setExposureAuto();
+    }
+
+    
+
   }
+
+  public static void isRobotReady(){
+    System.out.println("===================================================");
+    System.out.println("                                               ");
+    System.out.println("                                               ");
+    System.out.println("                 4984 Roxanne                  ");
+    System.out.println("       !!!!     Robot Is Ready       !!!!!     ");
+    System.out.println("                                               ");
+    System.out.println("                                               ");
+    System.out.println("===================================================");
   }
 
   public static CameraThread myCameraThread;

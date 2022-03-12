@@ -115,11 +115,11 @@ public class DriveTrain extends SubsystemBase {
 
    // setBrakeMode();
 
-    leftFrontDriveMotor.set(left/1.2);
-    leftBackDriveMotor.set(left/1.2);
+    leftFrontDriveMotor.set(left/Constants.DRIVER_DEVIDE_VALUE);
+    leftBackDriveMotor.set(left/Constants.DRIVER_DEVIDE_VALUE);
 
-    rightFrontDriveMotor.set(right/1.2);
-    rightBackDriveMotor.set(right/1.2);
+    rightFrontDriveMotor.set(right/Constants.DRIVER_DEVIDE_VALUE);
+    rightBackDriveMotor.set(right/Constants.DRIVER_DEVIDE_VALUE);
   }
 
   public static void resetEncoders (){
