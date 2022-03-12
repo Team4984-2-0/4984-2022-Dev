@@ -4,58 +4,40 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.subsystems.Hopper;
-import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.DriveTrain;
 
-public class outtakeAllCommand extends CommandBase {
-  /** Creates a new outtakeAllCommand. */
-  public outtakeAllCommand() {
+public class DriveStraightCommand extends CommandBase {
+  /** Creates a new DriveStraightCommand. */
+  public DriveStraightCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.pneumatics);
-    addRequirements(Robot.hopper);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    Timer.getMatchTime();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    Pneumatics.TailgateEnableCommand();
-    Hopper.hopperSimControler();
-    Pneumatics.TailgateEnableCommand();
 
-
+    //DriveTrain.setCoastMode();
+    double x =  Robot.m_robotContainer.getDriverRight().getRawAxis(Constants.DRIVER_JOYSTICK_AXIS);
+    
+    DriveTrain.Drive(x, -x);
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-
-
-
-    if(Timer.getMatchTime() <= 12){
-
-      Pneumatics.TailgateDisableCommand();
-     return true;
-   
-    }
-
     return false;
-
-
-  
   }
 }

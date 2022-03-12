@@ -26,9 +26,13 @@ public class Hopper extends SubsystemBase {
     hopperMotorBack.follow(hopperMotorFront);
     if (Math.abs(speed) > 0.1) {
       hopperMotorFront.set(ControlMode.PercentOutput, controller.getRawAxis(axis));
+      hopperMotorBack.set(ControlMode.PercentOutput, controller.getRawAxis(axis));
+
     }
     else {
       hopperMotorFront.set(ControlMode.PercentOutput, 0);
+      hopperMotorFront.set(ControlMode.PercentOutput, 0);
+
     }
    
   }

@@ -40,7 +40,7 @@ public class DriveDistanceCommand extends CommandBase {
   public void execute() {
     DriveTrain.setBrakeMode();
     DriveTrain.Drive(m_left, m_right);
-    System.out.println(DriveTrain.leftFrontDriveEncoder.getPosition()/Constants.mainEncoderValues);
+   // System.out.println(DriveTrain.leftFrontDriveEncoder.getPosition()/Constants.mainEncoderValues);
 
   }
 

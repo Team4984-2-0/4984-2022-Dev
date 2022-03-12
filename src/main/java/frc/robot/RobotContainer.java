@@ -13,7 +13,7 @@ public class RobotContainer {
   public static XboxController operatorController = new XboxController(Constants.OPERATOR_CONTROLLER);
 
 
-  JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
+  public static JoystickButton StraightCommand = new JoystickButton(driverJoystickRight, Constants.DRIVE_STRAIGHT_BUTTON);
   JoystickButton ReverseDrive = new JoystickButton(driverJoystickLeft, Constants.DRIVE_REVERSE_BUTTON);
 
 
@@ -25,7 +25,6 @@ public class RobotContainer {
 
   public RobotContainer() {
   
-   
    outtakeAllButton.whileHeld(new outtakeAllCommand());
 
  

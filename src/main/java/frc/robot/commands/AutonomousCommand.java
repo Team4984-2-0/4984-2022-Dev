@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
+import frc.robot.subsystems.DriveTrain;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -16,17 +17,16 @@ public class AutonomousCommand extends SequentialCommandGroup {
 
   /** Creates a new AutonomousCommand. */
   public AutonomousCommand() {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
 
-   
+    DriveTrain.resetEncoders();
+    
     addCommands(
     
-   new outtakeAllCommand()
-   // new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
+   new outtakeAllCommand(), new outtakeStopCommand(), new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
     );
-   andThen(new outtakeStopCommand());
-   andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
+
+  // andThen(new outtakeStopCommand());
+  // andThen(new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2));
     
 
    
