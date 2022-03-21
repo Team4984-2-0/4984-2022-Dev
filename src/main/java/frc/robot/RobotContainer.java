@@ -1,9 +1,11 @@
 package frc.robot;
 
+import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.subsystems.DriveTrain;
 
 public class RobotContainer {
   
@@ -21,13 +23,15 @@ public class RobotContainer {
 
   JoystickButton outtakeAllButton = new JoystickButton(operatorController, Constants.OUTTAKE_ALL_BUTTON);
 
+  //JoystickButton encoderDisplayButton = new JoystickButton(driverJoystickRight, Constants.ENCODER_DISPLAY_BUTTON);
+
 
 
   public RobotContainer() {
   
    outtakeAllButton.whileHeld(new outtakeAllCommand());
 
- 
+   //encoderDisplayButton.whileHeld(new encoderDisplay());  
   }
   
 
