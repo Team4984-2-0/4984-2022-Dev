@@ -83,7 +83,9 @@ public class Robot extends TimedRobot {
 
     m_robotContainer = new RobotContainer();
 
-    DriveTrain.resetEncoders();
+   // DriveTrain.resetEncoders();
+   DriveTrain.resetEncoders();
+
 
 
    // m_robotDrive = new MecanumDrive(DriveTrain.leftFrontDriveMotor, DriveTrain.leftBackDriveMotor, DriveTrain.rightFrontDriveMotor, DriveTrain.rightBackDriveMotor);
@@ -93,7 +95,7 @@ public class Robot extends TimedRobot {
     myCameraThread = new CameraThread();
     CameraServer.getInstance();
     usbCamera1 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA1);
-    usbCamera2 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA2);
+   // usbCamera2 = CameraServer.startAutomaticCapture(myCameraThread.CAMERA2);
     CameraServer.getInstance();
     myCameraThread.server = CameraServer.getServer();
 
@@ -122,13 +124,7 @@ public class Robot extends TimedRobot {
 
 
     DriveTrain.setCoastMode();
-
-
-  
     Shuffleboard.update();
-
-
-    isRobotReady();
 
   }
   
@@ -180,16 +176,6 @@ public class Robot extends TimedRobot {
 
   }
 
-  public static void teleRun () {
-
-   // Robot.hopper.setHopperMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_LEFT_AXIS_Y);
-  //  Robot.winch.setWinchMotor(Robot.m_robotContainer.getOperator(), Constants.OPERATOR_RIGHT_AXIS_Y);
-   // Pneumatics.TailgateSoleniodEnable();
-   // Pneumatics.hookLSolenoidEnable();
-   // Pneumatics.hookRolenoidEnable();
-  
-
-  }
 
 
   @Override
@@ -204,13 +190,15 @@ public class Robot extends TimedRobot {
     
     teleRunCommand.Run();
 
-    RobotContainer.StraightCommand.whileHeld(new DriveStraightCommand()); 
+    // RobotContainer.StraightCommand.whileHeld(new DriveStraightCommand()); 
 
 
-
+     
     DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1))), 
       ((-RobotContainer.GetDriverJoystickRightRawAxis(1))));
+
+ 
 
       /*
 
@@ -235,16 +223,16 @@ public class Robot extends TimedRobot {
 
 
     }
+*/
+    
 
-    */
-
-      /*
-
+      
+/*
     DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft)), 
       ((-RobotContainer.GetDriverJoystickRightRawAxis(1)/Constants.globalDeadZoneRight)));
 
-    if(RobotContainer.driverJoystickLeft.getRawAxis(1) == 0.1){
+    if(RobotContainer.driverJoystickLeft.getRawAxis(1) <= 0.05){
 
       DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft-maxRevRate)), 
@@ -255,7 +243,7 @@ public class Robot extends TimedRobot {
 
     }
 
-    if(RobotContainer.driverJoystickRight.getRawAxis(1) == 0.1){
+    if(RobotContainer.driverJoystickRight.getRawAxis(1) <= 0.05){
 
       DriveTrain.Drive(
       ((RobotContainer.GetDriverJoystickLeftRawAxis(1)/Constants.globalDeadZoneLeft-maxRevRate)), 
@@ -265,8 +253,8 @@ public class Robot extends TimedRobot {
 
 
     }
-
-  */
+*/
+  
 
   //  TankDriveCommand.run();
     teleRunCommand.Run();
@@ -286,10 +274,10 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {}
 
   public static UsbCamera usbCamera1 = null;
-  public static UsbCamera usbCamera2 = null;
+ // public static UsbCamera usbCamera2 = null;
   public class CameraThread extends Thread {
     final int CAMERA1 = 0;
-    final int CAMERA2 = 1;
+  //  final int CAMERA2 = 1;
    private final int currentCamera = CAMERA1;   // UNCOMMENT WHEN RUNNING THE PROGRAM THRU ROBORIO!!!!
 
     VideoSink server;
@@ -335,10 +323,12 @@ public class Robot extends TimedRobot {
         usbCamera1.setBrightness(Constants.CAMERA1_BRIGHTNESS);  
         usbCamera1.setExposureAuto();  
 
-        usbCamera2.setFPS(Constants.CAMERA2_FPS);
+      /*  usbCamera2.setFPS(Constants.CAMERA2_FPS);
         usbCamera2.setBrightness(Constants.CAMERA2_BRIGHTNESS);
         usbCamera2.setExposureAuto();
-    }
+      
+        */
+      }
 
     
 

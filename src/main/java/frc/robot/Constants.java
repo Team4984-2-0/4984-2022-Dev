@@ -23,6 +23,9 @@ public final class Constants {
   
     //Left Side
       public static final int DRIVER_AUTO_BUTTON = 3;
+
+    // Encoder Display
+    public static final int ENCODER_DISPLAY_BUTTON = 11;
   
   
     //OPERATOR CONTROLLER ID
@@ -44,8 +47,8 @@ public final class Constants {
 
 
     //CAMERA FUNCTIONS
-    public static final int CAMERA1_FPS = 17;
-    public static final int CAMERA2_FPS = 17;
+    public static final int CAMERA1_FPS = 12;
+    public static final int CAMERA2_FPS = 12;
 
     public static final int CAMERA1_BRIGHTNESS = 50;
     public static final int CAMERA2_BRIGHTNESS = 44;
@@ -94,9 +97,9 @@ public final class Constants {
     public static final double DRIVER_DEVIDE_VALUE = 1.4;
 
      //Step 1
-    public static final double DISTANCE_1 = 12;
-    public static final double LEFT_MOTOR_1 = -0.10; //Forward
-    public static final double RIGHT_MOTOR_1 = 0.10;
+    public static final double DISTANCE_1 = 0;
+    public static final double LEFT_MOTOR_1 = 0; //Forward
+    public static final double RIGHT_MOTOR_1 = 0;
 
     // Step 3
     public static final int DISTANCE_2 = 135;  //Main value of 135 encoder rotation values

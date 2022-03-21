@@ -18,11 +18,10 @@ public class AutonomousCommand extends SequentialCommandGroup {
   /** Creates a new AutonomousCommand. */
   public AutonomousCommand() {
 
-    DriveTrain.resetEncoders();
     
     addCommands(
     
-   new outtakeAllCommand(), new outtakeStopCommand(), new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
+    new outtakeAllCommand(), new outtakeStopCommand(), new DriveDistanceCommand(Constants.DISTANCE_2, Constants.LEFT_MOTOR_2, Constants.RIGHT_MOTOR_2)
     );
 
   // andThen(new outtakeStopCommand());
